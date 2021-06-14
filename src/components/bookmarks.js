@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function bookmarks() {
+export default function Bookmarks() {
     return (
         <div>
             bookmarks

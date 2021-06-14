@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function quote() {
+export default function Quote() {
     return (
         <div>
             quote
