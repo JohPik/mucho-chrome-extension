@@ -1,3 +1,4 @@
+/*global chrome*/
 import React, { useEffect, useRef } from 'react';
 
 const Search = () => {
@@ -5,7 +6,12 @@ const Search = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(refContainer.current.value);
+        
+        let query = refContainer.current.value;
+
+        chrome.search.query({
+            text: query
+        });
     };
     
     useEffect(() => {
