@@ -16,6 +16,10 @@ const Search = () => {
 
     return (
         <>
+            {/* Temporary Text START*/}
+            <h2>SEARCH</h2>
+            {/* Temporary Text END*/}
+
             <form className='form' onSubmit={handleSubmit}>
                 <div>
                     <input 
