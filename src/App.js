@@ -1,12 +1,16 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Search from './components/Search'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="App">
-      <Search />
-    </div>
+    <>
+      <div className="main">
+        <Search />
+      </div>
+      <Footer />
+    </>
   );
 }
 
