@@ -30,6 +30,11 @@ button:hover {
 }
 
 /****** Main Section ******/
+#root {
+  position: relative;
+  height: 100vh;
+}
+
 .main {
   display: flex;
   justify-content: space-between;

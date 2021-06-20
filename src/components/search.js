@@ -15,59 +15,19 @@ const Search = () => {
 
 
     return (
-        <>
-            {/* Temporary Text START*/}
-            <h2>SEARCH</h2>
-            {/* Temporary Text END*/}
-
-            <form className='form' onSubmit={handleSubmit}>
-                <div>
-                    <input 
-                        id="myInput" 
-                        type='text' 
-                        value={query} 
-                        onChange={ e => setQuery(e.target.value)}
-                    />
-                </div>
+        <div className='search'>
+            <form onSubmit={handleSubmit}>
+                <input
+                    id="myInput"
+                    type='text'
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                    placeholder="Search"
+                />
+                <button type="submit"></button>
             </form>
-        </>
+        </div>
     );
 };
 
 export default Search;
-
-
-/* OLD Version using useRef*/
-// import React, { useEffect, useRef } from 'react';
-
-// const Search = () => {
-//     const refContainer = useRef(null);
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-
-//         let query = refContainer.current.value;
-
-//         chrome.search.query({
-//             text: query
-//         });
-
-//         refContainer.current.value = '';
-//     };
-
-//     useEffect(() => {
-//         refContainer.current.focus();
-//     });
-
-//     return (
-//         <>
-//             <form className='form' onSubmit={handleSubmit}>
-//                 <div>
-//                     <input id="myInput" type='text' ref={refContainer} />
-//                 </div>
-//             </form>
-//         </>
-//     );
-// };
-
-// export default Search;

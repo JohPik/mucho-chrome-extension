@@ -1,13 +1,18 @@
 // import logo from './logo.svg';
 import './App.css';
-import Search from './components/Search'
+import Quote from './components/Quote';
+import Features from './components/Features';
+import Times from './components/Times'
+
 import Footer from './components/Footer'
 
 function App() {
   return (
     <>
       <div className="main">
-        <Search />
+        <Quote />
+        <Features />
+        <Times />
       </div>
       <Footer />
     </>
