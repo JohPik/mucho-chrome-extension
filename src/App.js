@@ -2,19 +2,22 @@
 import './App.css';
 import Quote from './components/Quote';
 import Features from './components/Features';
-import Times from './components/Times'
+import Times from './components/Times';
+import Footer from './components/Footer';
+import FadeIn from './components/FadeIn';
 
-import Footer from './components/Footer'
 
 function App() {
   return (
     <>
+    <FadeIn>
       <div className="main">
         <Quote />
         <Features />
         <Times />
       </div>
       <Footer />
+      </FadeIn>
     </>
   );
 }

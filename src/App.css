@@ -14,7 +14,6 @@
 }
 
 body {
-  background-color: lightblue;
   font-family: var(--ff-primary);
   font-weight: 300;
 }
@@ -31,6 +30,11 @@ button:hover {
 
 /****** Main Section ******/
 #root {
+  position: relative;
+  height: 100vh;
+}
+
+.fade-in-wrapper {
   position: relative;
   height: 100vh;
 }

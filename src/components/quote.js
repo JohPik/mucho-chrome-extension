@@ -24,7 +24,8 @@ export default function Quote() {
 
     return (
         <section className="quote">
-            <figure>
+            {author &&
+                < figure >
                 <blockquote cite="#">
                     <p>{quote}</p>
                 </blockquote>
@@ -36,6 +37,7 @@ export default function Quote() {
                     </cite>
                 </figcaption>
             </figure>
+            }
         </section>
 
     )
