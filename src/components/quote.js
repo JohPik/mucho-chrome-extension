@@ -11,7 +11,6 @@ export default function Quote() {
         .then(res => res.json())
         .then(data => {
             const { content: quote, author } = data;
-            console.log(data);
             setQuote(quote);
             setAuthor(author);
         })

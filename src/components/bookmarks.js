@@ -19,7 +19,7 @@ export default function Bookmarks() {
 
             <div className="bookmarks__links">
                 <div className="bookmark">
-                    <a href="">
+                    <a href="/">
                         <img className="bookmark__favicon" src={favicons} alt="" />
                         <p>amazon</p>
                         <button className="bookmark__edit-button">
