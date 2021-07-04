@@ -7,7 +7,7 @@ export default function Quote() {
     const [author, setAuthor] = useState("");
 
     const getQuote = () => {
-        fetch("https://api.quotable.io/random")
+        fetch("https://api.quotable.io/random?maxLength=70")
         .then(res => res.json())
         .then(data => {
             const { content: quote, author } = data;
