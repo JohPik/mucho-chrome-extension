@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Times() {
 
@@ -29,7 +29,7 @@ export default function Times() {
 
     return (
         <section className="times">
-            {time.hours && 
+            {time.hours &&
                 <div className="time_container">
                     <p className="time_zone">{timeZone}</p>
                     <p className="time-live">{time.hours <= 9 && 0}{time.hours}:{time.minutes <= 9 && 0}{time.minutes}:{time.seconds <= 9 && 0}{time.seconds}</p>
