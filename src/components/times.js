@@ -1,45 +1,39 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Clock from './Clock';
 
 export default function Times() {
 
-    const [time, setTime] = useState({
-        hours: null,
-        minutes: null,
-        seconds: null
-    });
-    const [timeZone, setTimeZone] = useState(null);
+    const [timeZone, setTimeZone] = useState("");
+    const [date, setDate] = useState({});
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const today = new Date();
-            const time = {
-                hours: today.getHours(),
-                minutes: today.getMinutes(),
-                seconds: today.getSeconds()
-            }
-            setTime(time)
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
+    const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
     useEffect(() => {
         setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
     }, []);
 
+    useEffect(() => {
+        const today = new Date();
+        const date = {
+            year: today.getFullYear(),
+            month: today.getMonth(),
+            day: today.getDate(),
+            weekday: today.getDay()
+        }
+        setDate(date)
+    }, []);
+
     return (
         <section className="times">
-            {time.hours &&
+      
                 <div className="time_container">
+                    <p className="date">{weekDays[date.weekday]}, {date.weekday} {months[date.month]} {date.year}</p>
+                    <Clock />
                     <p className="time_zone">{timeZone}</p>
-                    <p className="time-live">{time.hours <= 9 && 0}{time.hours}:{time.minutes <= 9 && 0}{time.minutes}:{time.seconds <= 9 && 0}{time.seconds}</p>
-                    <p className="time_location">{timeZone}</p>
                 </div>
-            }
-            <button></button>
-            <div className="world-time">
-                {/* <WorldTime/> */}
-            </div>
+            
         </section>
     )
 };

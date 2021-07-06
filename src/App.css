@@ -260,18 +260,23 @@ blockquote p::after {
   font-size: 1.5625rem;
 }
 
-.time_zone {
-  font-size: 0.625rem;
-  padding-bottom: 0.625rem;
+.date {
+  font-size: 0.7rem;
+  padding-bottom: 0.3rem;
+  font-weight: bold;
 }
 
 .time_live {
   padding-bottom: 0.225rem;
 }
 
-.time_location {
+.time_zone {
   font-size: 1rem;
   padding-bottom: 1rem;
+}
+
+.time_secs {
+  font-size: 1rem;
 }
 
 .times button::before {
