@@ -1,8 +1,10 @@
 import React from 'react'
 
-export default function Settings() {
+export default function Settings({closeModal}) {
+
     return (
-        <div>
+        <div className="settings" onClick={() => closeModal(false)}>
+            <button>close me</button>
             settings
         </div>
     )
