@@ -312,10 +312,14 @@ footer .photo_copyright {
 .settings {
   background-color: aquamarine;
   position: absolute;
-  height: 100vh;
-  width: 100vw;
   top: 0;
   left: 0;
   z-index: 100;
+  opacity: 0;
+}
+
+.settings.active_modal {
+  height: 100vh;
+  width: 100vw;
   opacity: 0.8;
 }

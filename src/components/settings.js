@@ -1,11 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { useGlobalContext } from '../context';
 
-export default function Settings({closeModal}) {
+export default function Settings() {
+
+    const { isSettingsOpen, closeSettings } = useGlobalContext();
 
     return (
-        <div className="settings" onClick={() => closeModal(false)}>
-            <button>close me</button>
-            settings
-        </div>
+        <>
+            {
+                isSettingsOpen &&
+                <div className="settings active_modal">
+                <h2>SETTINGS</h2>
+                <button onClick={closeSettings}>close me</button>
+                </div>
+
+            }
+        </>
     )
-}
+};
