@@ -12,16 +12,21 @@ export default function Bookmarks() {
         setCurrentTab(tabNav[0]);
     }, []);
 
-    console.log("currentTab", currentTab)
+    if (!currentTab){
+        return(
+            <h2>Loading</h2>
+        )
+    }
+
     return (
         <div className="bookmarks">
 
             <div className="bookmarks__navigation">
                 <ul>
                     {
-                        tabNav.map(tab => 
-                                <li key={tab.id}>
-                                <button onClick={() => setCurrentTab(tab)}>
+                        tabNav.map( tab => 
+                                <li key={tab.id} className={tab.id === currentTab.id ? "active" : null}>
+                                    <button onClick={() => setCurrentTab(tab)}>
                                         {tab.name}
                                     </button>
                                 </li>

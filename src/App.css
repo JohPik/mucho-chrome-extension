@@ -159,16 +159,31 @@ blockquote p::after {
   max-width: calc(100% - 3.125rem);
 }
 
-.bookmarks__navigation ul li {
+.bookmarks__navigation li {
   list-style: none;
   display: inline-block;
   font-size: 0.75rem;
   text-align: center;
+  position: relative;
 }
 
-.bookmarks__navigation ul li button {
+.bookmarks__navigation li button {
   color: var(--clr-white);
   text-transform: capitalize;
+  letter-spacing: 0.06rem;
+}
+.bookmarks__navigation li.active button {
+  text-shadow: 0px 0px 1px white;
+}
+
+.bookmarks__navigation li.active::after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  background: white;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
 }
 
 .bookmarks__navigation__edit-button {
@@ -277,10 +292,6 @@ blockquote p::after {
 .time_zone {
   font-size: 1rem;
   padding-bottom: 1rem;
-}
-
-.time_secs {
-  font-size: 1rem;
 }
 
 .times button::before {

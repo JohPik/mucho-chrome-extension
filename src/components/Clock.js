@@ -21,12 +21,8 @@ export default function Clock() {
     return (
         <>
             {time.hours &&
-                <p className="time-live" > 
-                    {time.hours <= 9 && 0}{time.hours}:
-                    {time.minutes <= 9 && 0}{time.minutes}:
-                    <span className="time_secs">
-                        {time.seconds <= 9 && 0}{time.seconds}
-                    </span>
+                <p className="time-live" >
+                    {time.hours <= 9 && 0}{time.hours}:{time.minutes <= 9 && 0}{time.minutes}:{time.seconds <= 9 && 0}{time.seconds}
                 </p>
             }
         </>
