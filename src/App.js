@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 import FadeIn from './components/FadeIn';
 
 function App() {
-
   return (
     <>
     <FadeIn>

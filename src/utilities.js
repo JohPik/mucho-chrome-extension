@@ -6,17 +6,20 @@ const tabs = [
             {
                 id: 1,
                 linkName: "amazon",
-                url: "#"
+                url: "#",
+                img: "../img/favicons/amazon.png"
             },
             {
                 id: 2,
                 linkName: "netflix",
-                url: "#"
+                url: "#",
+                img: "../img/favicons/netflix.png"
             },
             {
                 id: 3,
                 linkName: "youtube",
-                url: "#"
+                url: "#",
+                img: "../img/favicons/youtube.png"
             }
         ]
     },
@@ -27,12 +30,14 @@ const tabs = [
             {
                 id: 1,
                 linkName: "amazon",
-                url: "#"
+                url: "#",
+                img: "../img/favicons/amazon.png",
             },
             {
                 id: 2,
-                linkName: "ebay",
-                url: "#"
+                linkName: "wiki",
+                url: "#",
+                img: "../img/favicons/wiki.png"
             }
         ]
     },
@@ -43,28 +48,32 @@ const tabs = [
             {
                 id: 1,
                 linkName: "footbal",
-                url: "#"
+                url: "#",
+                img: "../img/favicons/CHANGEME.png"
             },
             {
                 id: 2,
                 linkName: "tennis",
-                url: "#"
+                url: "#",
+                img: "../img/favicons/CHANGEME.png"
             }
         ]
     },
     {
         id: 4,
-        name: "streaming",
+        name: "social",
         links: [
             {
                 id: 1,
-                linkName: "Netflix",
-                url: "#"
+                linkName: "facebook",
+                url: "#",
+                img: "../img/favicons/facebook.png"
             },
             {
                 id: 2,
-                linkName: "Prime",
-                url: "#"
+                linkName: "linkedin",
+                url: "#",
+                img: "../img/favicons/linkedin.png"
             }
         ]
     },
@@ -74,13 +83,15 @@ const tabs = [
         links: [
             {
                 id: 1,
-                linkName: "Youtube",
-                url: "#"
+                linkName: "youtube",
+                url: "#",
+                img: "../img/favicons/youtube.png"
             },
             {
                 id: 2,
-                linkName: "Spotify",
-                url: "#"
+                linkName: "twitch",
+                url: "#",
+                img: "../img/favicons/twitch.png"
             }
         ]
     },
