@@ -1,9 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useGlobalContext } from '../context';
+import { createApi } from 'unsplash-js';
 
-export default function Settings() {
+const unsplash = createApi({
+    accessKey: process.env.REACT_APP_UNSPLASH_KEY,
+    headers: { 'X-Custom-Header': 'foo' },
+});
+
+
+function Settings() {
 
     const { isSettingsOpen, closeSettings } = useGlobalContext();
+
+    const getQuote = () => {
+        unsplash.search.getPhotos({
+            query: 'cat',
+            page: 1,
+            perPage: 10,
+            orientation: 'landscape',
+        })
+        .then(data => {
+            console.log(data);
+        })
+    };
 
     return (
         <>
@@ -18,3 +37,5 @@ export default function Settings() {
         </>
     )
 };
+
+export default Settings
