@@ -42,7 +42,6 @@ button:hover {
 .main {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
@@ -84,6 +83,7 @@ blockquote p::after {
 .features {
   max-width: 600px;
   width: 100%;
+  padding-top: 15%;
 }
 
 .features .search input {
@@ -164,6 +164,10 @@ blockquote p::after {
   display: inline-block;
   font-size: 0.75rem;
   text-align: center;
+}
+
+.bookmarks__navigation ul li button {
+  color: var(--clr-white);
   text-transform: capitalize;
 }
 

@@ -20,6 +20,48 @@ const tabs = [
                 linkName: "youtube",
                 url: "#",
                 img: "../img/favicons/youtube.png"
+            },
+            {
+                id: 4,
+                linkName: "amazon",
+                url: "#",
+                img: "../img/favicons/amazon.png"
+            },
+            {
+                id: 5,
+                linkName: "netflix",
+                url: "#",
+                img: "../img/favicons/netflix.png"
+            },
+            {
+                id: 6,
+                linkName: "youtube",
+                url: "#",
+                img: "../img/favicons/youtube.png"
+            },
+            {
+                id: 7,
+                linkName: "youtube",
+                url: "#",
+                img: "../img/favicons/youtube.png"
+            },
+            {
+                id: 8,
+                linkName: "amazon",
+                url: "#",
+                img: "../img/favicons/amazon.png"
+            },
+            {
+                id: 9,
+                linkName: "netflix",
+                url: "#",
+                img: "../img/favicons/netflix.png"
+            },
+            {
+                id: 10,
+                linkName: "youtube",
+                url: "#",
+                img: "../img/favicons/youtube.png"
             }
         ]
     },
