@@ -32,27 +32,25 @@ export default function Bookmarks() {
             </div>
 
             <div className="bookmarks__links">
-                    <div className="bookmark">
-                        { currentTab && 
-                            <>
-                                {currentTab.links.map(link => {
-
-                                    const { id, linkName, img, url } = link;
-                                    console.log("IMG", img);
-
-                                    return (
-                                        <a key={id} href={url}>
+                { currentTab && 
+                    <>
+                        {currentTab.links.map(link => {
+                                const { id, linkName, img, url } = link;
+                            
+                                return (
+                                    <div key={id} className="bookmark">
+                                        <a href={url}>
                                             <img className="bookmark__favicon" src={img} alt={`${linkName} link`} />
                                             <p>{linkName}</p>
                                             <button className="bookmark__edit-button">
                                                 <img src={threeDots} alt="" />
                                             </button>
                                         </a>
-                                    )
-                                })}
-                            </>
-                        }
-                    </div>
+                                    </div>
+                                )
+                        })}
+                    </>
+            }
             </div>
         </div>
     )
