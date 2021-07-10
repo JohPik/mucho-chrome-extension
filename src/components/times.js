@@ -29,7 +29,7 @@ export default function Times() {
         <section className="times">
             {timeZone.length !== 0 &&
                 <div className="time_container">
-                    <p className="date">{weekDays[date.weekday]}, {date.weekday} {months[date.month]} {date.year}</p>
+                    <p className="date">{weekDays[date.weekday - 1]}, {date.weekday} {months[date.month]} {date.year}</p>
                     <Clock />
                     <p className="time_zone">{timeZone}</p>
                 </div>
