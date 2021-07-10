@@ -1,16 +1,15 @@
 import React, { useState, useEffect} from 'react';
 import threeDots from '../img/three-dots.svg';
-import favicons from '../img/favicons/amazon.png';
 import Tabs from '../utilities';
 
 export default function Bookmarks() {
 
     const [currentTab, setCurrentTab] = useState(null);
-    const [tabNav, setTabNav] = useState(Tabs);
+    const [tabNav] = useState(Tabs);
 
     useEffect( () => {
         setCurrentTab(tabNav[0]);
-    }, []);
+    }, [tabNav]);
 
     if (!currentTab){
         return(
