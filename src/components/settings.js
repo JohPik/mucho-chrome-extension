@@ -10,44 +10,14 @@ const unsplash = createApi({
 
 
 function Settings() {
-
     const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme} = useGlobalContext();
-
     const { isDarkModeOff, timeFormat, isQuoteDisable, quoteTheme} = settingsState;
-
-    // const [settings, setSettings] = useState({
-    //     isDarkMode: true,
-    //     isTimeFormat24: true,
-    //     isQuoteDisable: false,
-    //     quoteTheme: "",
-    //     backGround: ""
-    // })
-
-    // const getQuote = () => {
-    //     unsplash.search.getPhotos({
-    //         query: 'cat',
-    //         page: 1,
-    //         perPage: 10,
-    //         orientation: 'landscape',
-    //     })
-    //     .then(data => {
-    //         console.log(data.response.results);
-    //     })
-    // };
-
-
-    // const [lightMode, isLightMode] = useState(false);
-    // const handleChange = e => {
-    //     isLightMode(!lightMode)
-    // }
-
-    console.log(settingsState)
 
     return (
         <>
             {
                 isSettingsOpen &&
-                <section className="settings active_modal">
+                <section className={isDarkModeOff ? "settings light-mode" : "settings"}>
                     <h2>Settings</h2>
                     <button onClick={closeSettings}>close me</button>
 

@@ -18,7 +18,7 @@ const Search = () => {
         <div className='search'>
             <form onSubmit={handleSubmit}>
                 <input
-                    id="myInput"
+                    id="search-engine-input"
                     type='text'
                     value={query}
                     onChange={e => setQuery(e.target.value)}

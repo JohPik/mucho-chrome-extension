@@ -1,9 +1,14 @@
 :root {
-  --clr-dark: rgba(12, 12, 12, 0.9);
+  --clr-dark-900: rgba(12, 12, 12, 0.9);
+  --clr-dark-600: rgba(20, 20, 20, 0.6);
   --clr-white: #fff;
+  --clr-white-900: rgba(255, 255, 255, 0.95);
+  --clr-white-800: rgba(255, 255, 255, 0.8);
+  --clr-white-400: rgba(255, 255, 255, 0.4);
   --clr-settings-dark: #02000f;
 
   --ff-primary: 'Roboto', sans-serif;
+  --text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /***************** General *****************/
@@ -62,7 +67,7 @@ button:hover {
   font-weight: normal;
   line-height: 19px;
   letter-spacing: 0.1em;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: var(--text-shadow);
   font-size: 1rem;
   max-width: 300px;
   width: 100%;
@@ -88,7 +93,7 @@ blockquote p::after {
 }
 
 .features .search input {
-  background: rgba(20, 20, 20, 0.6);
+  background: var(--clr-dark-600);
   border-radius: 20px 0px 0px 20px;
   border: none;
   color: var(--clr-white);
@@ -97,6 +102,10 @@ blockquote p::after {
   padding: 0.625rem 1.875rem;
   font-weight: 300;
   letter-spacing: 0.1em;
+}
+
+#search-engine-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .features .search form {
@@ -122,7 +131,7 @@ blockquote p::after {
   position: absolute;
   top: 0;
   right: 0;
-  background: rgba(12, 12, 12, 0.9);
+  background: var(--clr-dark-900);
   border-radius: 0px 1.25rem 1.25rem 0px;
   width: 70px;
   height: 100%;
@@ -134,14 +143,14 @@ blockquote p::after {
 
 .bookmarks {
   margin-top: 3.125rem;
-  background: rgba(20, 20, 20, 0.6);
+  background: var(--clr-dark-600);
   border-radius: 20px;
   max-width: 600px;
   width: 100%;
 }
 
 .bookmarks__navigation {
-  background: rgba(20, 20, 20, 0.6);
+  background: var(--clr-dark-600);
   border-radius: 20px 20px 0px 0px;
   width: 100%;
   height: 50px;
@@ -276,7 +285,7 @@ blockquote p::after {
   max-width: 300px;
   width: 100%;
   text-align: right;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: var(--text-shadow);
   font-size: 1.5625rem;
 }
 
@@ -321,7 +330,7 @@ footer .settings__button::before {
 
 footer .photo_copyright {
   font-size: 0.625rem;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: var(--text-shadow);
 }
 
 /****** Settings (Modal) ******/
@@ -335,14 +344,18 @@ footer .photo_copyright {
   color: var(--clr-white);
   text-align: center;
   padding: 3.75rem 3.125rem;
-}
-
-.settings.active_modal {
   height: 100vh;
   width: 100vw;
   opacity: 0.95;
   text-transform: capitalize;
 }
+
+.settings,
+.settings > * {
+  transition: all ease 0.5s;
+}
+
+/* transition: all ease 0.2s; */
 
 .settings h2 {
   font-weight: 300;
@@ -370,11 +383,11 @@ footer .photo_copyright {
   font-weight: 400;
   font-size: 1rem;
   padding: 0 10px;
+  min-height: 70px;
 }
 
 .settings__action__container {
   display: inline-block;
-  padding: 20px 0;
   font-size: 0.8125rem;
 }
 
@@ -452,6 +465,63 @@ footer .photo_copyright {
 
 input:checked + .slider:before {
   transform: translateX(calc(100% + 2px));
+}
+
+/****** Light Mode ******/
+/* Main Page */
+.light-mode .search input,
+.light-mode .bookmarks {
+  background: var(--clr-white-400);
+  color: var(--clr-dark-900);
+  font-weight: 500;
+}
+
+.light-mode .search button,
+.light-mode .bookmarks__navigation {
+  background: var(--clr-white-800);
+}
+
+.light-mode .bookmarks__navigation li button,
+.light-mode .bookmark a {
+  color: var(--clr-dark-900);
+}
+
+.light-mode .bookmarks__navigation li.active::after,
+.light-mode .bookmark p::after {
+  background-color: var(--clr-dark-900);
+}
+
+.light-mode #search-engine-input::placeholder {
+  color: var(--clr-dark-600);
+}
+
+/* Settings (Modal) */
+.light-mode.settings {
+  background-color: var(--clr-white-900);
+  color: var(--clr-dark-900);
+}
+
+.light-mode .settings__main__field {
+  box-shadow: 0px -2px 0px 0px rgba(20, 20, 20, 0.1);
+}
+
+.light-mode .settings__action__container select,
+.light-mode .settings__action__container input[type='text'] {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--clr-dark-900);
+}
+
+.light-mode .settings__action__container select {
+  background-image: linear-gradient(45deg, transparent 50%, black 50%),
+    linear-gradient(135deg, black 50%, transparent 50%);
+}
+
+.light-mode .slider {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .slider:before {
+  background-color: var(--clr-dark-900);
 }
 
 /* To change */
