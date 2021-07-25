@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useGlobalContext } from '../context';
 import { createApi } from 'unsplash-js';
 import BackGroundImage from './BackGroundImage';
@@ -11,36 +11,38 @@ const unsplash = createApi({
 
 function Settings() {
 
-    const { isSettingsOpen, closeSettings } = useGlobalContext();
+    const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme} = useGlobalContext();
 
-    const [settings, setSettings] = useState({
-        dark_mode: true,
-        timeFormat24: true,
-        quoteDisable: false,
-        quoteTheme: "",
-        quoteAuthor: [],
-        backGround: ""
-    })
+    const { isDarkModeOff, timeFormat, isQuoteDisable, quoteTheme} = settingsState;
 
-    const getQuote = () => {
-        unsplash.search.getPhotos({
-            query: 'cat',
-            page: 1,
-            perPage: 10,
-            orientation: 'landscape',
-        })
-        .then(data => {
-            console.log(data.response.results);
-        })
-    };
+    // const [settings, setSettings] = useState({
+    //     isDarkMode: true,
+    //     isTimeFormat24: true,
+    //     isQuoteDisable: false,
+    //     quoteTheme: "",
+    //     backGround: ""
+    // })
+
+    // const getQuote = () => {
+    //     unsplash.search.getPhotos({
+    //         query: 'cat',
+    //         page: 1,
+    //         perPage: 10,
+    //         orientation: 'landscape',
+    //     })
+    //     .then(data => {
+    //         console.log(data.response.results);
+    //     })
+    // };
 
 
-    const [lightMode, isLightMode] = useState(false);
-    const handleChange = e => {
-        isLightMode(!lightMode)
-    }
+    // const [lightMode, isLightMode] = useState(false);
+    // const handleChange = e => {
+    //     isLightMode(!lightMode)
+    // }
 
-    console.log(lightMode)
+    console.log(settingsState)
+
     return (
         <>
             {
@@ -56,9 +58,9 @@ function Settings() {
                             <div className="settings__action__container">
                                 <span>dark</span>
                                 <div className="toggleSwitch">
-                                    <label class="switch">
-                                        <input type="checkbox"/>
-                                        <span class="slider"></span>
+                                    <label className="switch">
+                                        <input type="checkbox" defaultChecked={isDarkModeOff} onChange={toggleDarkMode}/>
+                                        <span className="slider"></span>
                                     </label>
                                 </div>
                                 <span>light</span>
@@ -68,9 +70,9 @@ function Settings() {
                         <div className="settings__main__field">
                             <p className="settings__label">Time Format</p>
                             <div className="settings__action__container">
-                                <select name="timeFormat" id="timeFormat">
+                                <select name="timeFormat" id="timeFormat" value={timeFormat} onChange={(e) => changeTimeFormat(e.target.value)}>
                                     <option value="24">24 hours (default)</option>
-                                    <option value="saab">12 hours</option>
+                                    <option value="12">12 hours</option>
                                 </select>
                             </div>
                         </div>
@@ -80,9 +82,9 @@ function Settings() {
                             <div className="settings__action__container">
                                 <span>off</span>
                                 <div className="toggleSwitch">
-                                    <label class="switch">
-                                        <input type="checkbox" />
-                                        <span class="slider"></span>
+                                    <label className="switch">
+                                        <input type="checkbox" defaultChecked={isQuoteDisable} onChange={disableQuote}/>
+                                        <span className="slider"></span>
                                     </label>
                                 </div>
                                 <span>on</span>
@@ -92,8 +94,28 @@ function Settings() {
                         <div className="settings__main__field">
                             <p className="settings__label">Quote Theme</p>
                             <div className="settings__action__container">
-                                <select name="quoteTheme" id="quoteTheme">
+                                <select name="quoteTheme" id="quoteTheme" value={quoteTheme} onChange={(e) => ChangeQuoteTheme(e.target.value)}>
                                     <option value="all">All</option>
+                                    <option value="business">business</option>
+                                    <option value="education">education</option>
+                                    <option value="faith">faith</option>
+                                    <option value="famous-quotes">famous-quotes</option>
+                                    <option value="friendship">friendship</option>
+                                    <option value="future">future</option>
+                                    <option value="happiness">happiness</option>
+                                    <option value="history">history</option>
+                                    <option value="inspirational">inspirational</option>
+                                    <option value="life">life</option>
+                                    <option value="literature">literature</option>
+                                    <option value="love">love</option>
+                                    <option value="nature">nature</option>
+                                    <option value="politics">politics</option>
+                                    <option value="proverb">proverb</option>
+                                    <option value="religion">religion</option>
+                                    <option value="science">science</option>
+                                    <option value="success">success</option>
+                                    <option value="technology">technology</option>
+                                    <option value="wisdom">wisdom</option>
                                 </select>
                             </div>
                         </div>
@@ -114,17 +136,3 @@ function Settings() {
 };
 
 export default Settings
-
-
-//     < div className = "wrg-toggle" >
-//     <div className="wrg-toggle-container">
-//         <div className="wrg-toggle-check">
-//             <span>🌜</span>
-//         </div>
-//         <div className="wrg-toggle-uncheck">
-//             <span>🌞</span>
-//         </div>
-//     </div>
-//     <div className="wrg-toggle-circle"></div>
-//     <input className="wrg-toggle-input" type="checkbox" aria-label="Toggle Button" />
-// </div >
