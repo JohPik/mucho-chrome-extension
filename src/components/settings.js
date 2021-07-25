@@ -64,7 +64,10 @@ function Settings() {
                         <div className="settings__main__field">
                             <p className="settings__label">Quote Theme</p>
                             <div className="settings__action__container">
-                                <select name="quoteTheme" id="quoteTheme" value={quoteTheme} onChange={(e) => ChangeQuoteTheme(e.target.value)}>
+                                <select name="quoteTheme" id="quoteTheme" 
+                                    disabled={isQuoteDisable ? true : null}
+                                    value={quoteTheme} 
+                                    onChange={(e) => ChangeQuoteTheme(e.target.value)}>
                                     <option value="all">All</option>
                                     <option value="business">business</option>
                                     <option value="education">education</option>

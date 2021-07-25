@@ -4,7 +4,7 @@
   --clr-white: #fff;
   --clr-white-900: rgba(255, 255, 255, 0.95);
   --clr-white-800: rgba(255, 255, 255, 0.8);
-  --clr-white-400: rgba(255, 255, 255, 0.4);
+  --clr-white-400: rgba(255, 255, 255, 0.5);
   --clr-settings-dark: #02000f;
 
   --ff-primary: 'Roboto', sans-serif;
@@ -354,8 +354,6 @@ footer .photo_copyright {
 .settings > * {
   transition: all ease 0.5s;
 }
-
-/* transition: all ease 0.2s; */
 
 .settings h2 {
   font-weight: 300;
