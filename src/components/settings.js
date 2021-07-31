@@ -1,17 +1,39 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useGlobalContext } from '../context';
-import { createApi } from 'unsplash-js';
 import BackGroundImage from './BackGroundImage';
+import { createApi } from 'unsplash-js';
 
 const unsplash = createApi({
-    accessKey: process.env.REACT_APP_UNSPLASH_KEY,
-    headers: { 'X-Custom-Header': 'foo' },
+    accessKey: process.env.REACT_APP_UNSPLASH_KEY
 });
 
-
-function Settings() {
+export default function Settings() {
+    
     const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme} = useGlobalContext();
     const { isDarkModeOff, timeFormat, isQuoteDisable, quoteTheme} = settingsState;
+
+    //Fetch unsplash Backgrounds
+    const [backgrounds, setBackgrounds] = useState([]);
+
+    const fetchBackgrounds = async (currentPage, query = refContainer.current.value) => {
+        return unsplash.search.getPhotos({
+            query: query,
+            page: currentPage,
+            perPage: 28,
+            orientation: 'landscape',
+        }).then(data => {
+            const newBackgrounds =  data.response.results;
+            currentPage === 1 ? setBackgrounds(newBackgrounds) : setBackgrounds([...backgrounds].concat(newBackgrounds));
+        })
+    };
+
+    //Unsplah form handler
+    const refContainer = useRef(null);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetchBackgrounds(1, refContainer.current.value);
+    };
 
     return (
         <>
@@ -96,16 +118,20 @@ function Settings() {
                         <div className="settings__main__field">
                             <p className="settings__label">Background Picture</p>
                             <div className="settings__action__container">
-                                <input type="text" placeholder="search"/>
+                                <form onSubmit={handleSubmit}>
+                                    <input type="text" placeholder="search" ref={refContainer}/>
+                                </form>
                             </div>
                         </div>
-                        <BackGroundImage />
+                        {backgrounds.length > 0 && (
+                            < BackGroundImage 
+                                backgrounds={backgrounds} 
+                                fetchBackgrounds={fetchBackgrounds} 
+                            />
+                        )}
                     </article>
                 </section>
-
             }
         </>
     )
 };
-
-export default Settings
