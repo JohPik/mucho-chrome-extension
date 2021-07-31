@@ -131,14 +131,30 @@ blockquote p::after {
   position: absolute;
   top: 0;
   right: 0;
-  background: var(--clr-dark-900);
+  background: var(--clr-dark-600);
   border-radius: 0px 1.25rem 1.25rem 0px;
   width: 70px;
   height: 100%;
+  z-index: 2;
+}
+
+.features .search button::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  border-radius: 0px 1.25rem 1.25rem 0px;
+  background: var(--clr-dark-600);
+  z-index: -1;
 }
 
 .features .search button::after {
   content: url('./img/search.svg');
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -45%);
 }
 
 .bookmarks {
