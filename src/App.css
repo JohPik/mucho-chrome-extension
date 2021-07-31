@@ -5,6 +5,7 @@
   --clr-white-900: rgba(255, 255, 255, 0.95);
   --clr-white-800: rgba(255, 255, 255, 0.8);
   --clr-white-400: rgba(255, 255, 255, 0.5);
+  --clr-white-200: rgba(255, 255, 255, 0.2);
   --clr-settings-dark: #02000f;
 
   --ff-primary: 'Roboto', sans-serif;
@@ -375,7 +376,7 @@ footer .photo_copyright {
   font-weight: 300;
 }
 
-.settings button {
+.settings button.close {
   position: absolute;
   top: 0;
   right: 0;
@@ -420,7 +421,7 @@ footer .photo_copyright {
   height: 35px;
   border-radius: 10px;
   padding: 0 10px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--clr-white-200);
   border: none;
   color: var(--clr-white);
 }
@@ -458,7 +459,7 @@ footer .photo_copyright {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--clr-white-200);
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 40px;
@@ -536,6 +537,62 @@ input:checked + .slider:before {
 
 .light-mode .slider:before {
   background-color: var(--clr-dark-900);
+}
+
+/****** Unsplash backgrounds ******/
+
+/* DELETE ME */
+.settings button.temp {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+/* ************ */
+
+.background-wrapper {
+  height: 300px;
+  width: calc(100% - 10px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 12px;
+  row-gap: 12px;
+  overflow-y: scroll;
+  position: relative;
+  padding: 0 10px;
+}
+
+.single-wrapper img {
+  width: 100%;
+  height: 100px;
+}
+
+.background-wrapper .load-more-wrapper {
+  width: 100%;
+  text-align: center;
+  grid-column: 1/5;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.load-more-wrapper button {
+  color: white;
+}
+
+.background-wrapper::-webkit-scrollbar {
+  background-color: var(--clr-white-200);
+  width: 10px;
+  height: 5px;
+  border-radius: 6px;
+}
+
+.background-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--clr-white);
+  margin-left: 20px;
+  border-radius: 6px;
 }
 
 /* To change */

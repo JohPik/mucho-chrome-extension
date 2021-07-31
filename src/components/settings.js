@@ -19,7 +19,7 @@ function Settings() {
                 isSettingsOpen &&
                 <section className={isDarkModeOff ? "settings light-mode" : "settings"}>
                     <h2>Settings</h2>
-                    <button onClick={closeSettings}>close me</button>
+                    <button className="close" onClick={closeSettings}>close me</button>
 
                     <article className="settings__main">
                         {/* Dark Mode*/}
