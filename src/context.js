@@ -43,6 +43,10 @@ const AppProvider = ({ children }) => {
         dispatch({ type: "CHANGE_QUOTE_THEME", payload: theme})
     }
 
+    const ChangeBackground = (img) => {
+        dispatch({ type: "CHANGE_BACKGROUND", payload: img })
+    }
+
     return (
         <AppContext.Provider value={{ 
             isSettingsOpen, 
@@ -52,7 +56,8 @@ const AppProvider = ({ children }) => {
             toggleDarkMode,
             changeTimeFormat,
             disableQuote,
-            ChangeQuoteTheme}}
+            ChangeQuoteTheme,
+            ChangeBackground}}
             >
             {children}
         </AppContext.Provider>

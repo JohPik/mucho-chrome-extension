@@ -16,6 +16,10 @@ const settingsReducer = (state, action) => {
         return { ...state, quoteTheme: action.payload}
     }
 
+    if (action.type === "CHANGE_BACKGROUND") {
+        return { ...state, backGround: action.payload }
+    }
+
     throw console.error("I am unkown");
 
 }

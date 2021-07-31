@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function BackGroundImage({ backgrounds, fetchBackgrounds }){
+export default function FetchedImages({ backgrounds, fetchBackgrounds, ChangeBackground }){
 
     const [currentPage, setCurrentPage] = useState(2);
 
@@ -13,7 +13,7 @@ export default function BackGroundImage({ backgrounds, fetchBackgrounds }){
     return(
         <div className="background-wrapper">
             {backgrounds.map(img =>
-                <div className="single-wrapper" key={img.id}>
+                <div className="single-wrapper" key={img.id} onClick={() => ChangeBackground(img)}>
                     <img src={img.urls.thumb} alt={img.alt_description} />
                 </div>
             )}

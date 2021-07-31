@@ -567,19 +567,26 @@ input:checked + .slider:before {
 .single-wrapper img {
   width: 100%;
   height: 100px;
+  cursor: pointer;
 }
 
 .background-wrapper .load-more-wrapper {
   width: 100%;
   text-align: center;
   grid-column: 1/5;
-  height: 50px;
   display: flex;
   justify-content: center;
 }
 
 .load-more-wrapper button {
-  color: white;
+  color: var(--clr-white);
+  font-weight: bold;
+  border: solid 1px var(--clr-white);
+  margin-top: 15px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }
 
 .background-wrapper::-webkit-scrollbar {

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useGlobalContext } from '../context';
-import BackGroundImage from './BackGroundImage';
+import FetchedImages from './FetchedImages';
 import { createApi } from 'unsplash-js';
 
 const unsplash = createApi({
@@ -9,21 +9,27 @@ const unsplash = createApi({
 
 export default function Settings() {
     
-    const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme} = useGlobalContext();
+    const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme, ChangeBackground} = useGlobalContext();
     const { isDarkModeOff, timeFormat, isQuoteDisable, quoteTheme} = settingsState;
 
     //Fetch unsplash Backgrounds
     const [backgrounds, setBackgrounds] = useState([]);
+    const [modal, setModal] = useState(false);
 
     const fetchBackgrounds = async (currentPage, query = refContainer.current.value) => {
-        return unsplash.search.getPhotos({
+        unsplash.search.getPhotos({
             query: query,
             page: currentPage,
             perPage: 28,
             orientation: 'landscape',
         }).then(data => {
-            const newBackgrounds =  data.response.results;
-            currentPage === 1 ? setBackgrounds(newBackgrounds) : setBackgrounds([...backgrounds].concat(newBackgrounds));
+            //if there is no images found 
+            if(data.response.total === 0) {
+                setModal(true);
+            } else {
+                const newBackgrounds = data.response.results;
+                currentPage === 1 ? setBackgrounds(newBackgrounds) : setBackgrounds([...backgrounds].concat(newBackgrounds));
+            }
         })
     };
 
@@ -31,6 +37,9 @@ export default function Settings() {
     const refContainer = useRef(null);
 
     const handleSubmit = (e) => {
+        if(modal){
+            setModal(false);
+        }
         e.preventDefault();
         fetchBackgrounds(1, refContainer.current.value);
     };
@@ -124,10 +133,14 @@ export default function Settings() {
                             </div>
                         </div>
                         {backgrounds.length > 0 && (
-                            < BackGroundImage 
+                            < FetchedImages
                                 backgrounds={backgrounds} 
                                 fetchBackgrounds={fetchBackgrounds} 
+                                ChangeBackground={ChangeBackground}
                             />
+                        )}
+                        {modal && (
+                            <p>No results found!</p>
                         )}
                     </article>
                 </section>
