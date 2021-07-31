@@ -8,19 +8,19 @@ const unsplash = createApi({
 
 export default function BackGroundImage() {
 
-    // const getQuote = () => {
-    //     unsplash.search.getPhotos({
-    //         query: 'cat',
-    //         page: 1,
-    //         perPage: 10,
-    //         orientation: 'landscape',
-    //     })
-    //         .then(data => {
-    //             console.log(data.response.results);
-    //         })
-    // };
+    const getQuote = () => {
+        unsplash.search.getPhotos({
+            query: 'cat',
+            page: 1,
+            perPage: 10,
+            orientation: 'landscape',
+        })
+            .then(data => {
+                console.log(data.response.results);
+            })
+    };
 
-    // getQuote()
+    getQuote()
 
     return ( 
         <div>
