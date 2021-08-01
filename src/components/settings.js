@@ -44,13 +44,20 @@ export default function Settings() {
         fetchBackgrounds(1, refContainer.current.value);
     };
 
+    //handle closing modal
+
+    const closeModal = () => {
+        setBackgrounds([]);
+        closeSettings();
+    }
+
     return (
         <>
             {
                 isSettingsOpen &&
                 <section className={isDarkModeOff ? "settings light-mode" : "settings"}>
                     <h2>Settings</h2>
-                    <button className="close" onClick={closeSettings}>close me</button>
+                    <button className="close" onClick={closeModal}>close me</button>
 
                     <article className="settings__main">
                         {/* Dark Mode*/}
