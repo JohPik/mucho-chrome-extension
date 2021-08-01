@@ -25,13 +25,13 @@ export default function Clock() {
     if (time.hours) {
         if (timeFormat === "24") {
             return (
-                <p className="time-live">
+                <p className="time_live">
                     {time.hours <= 9 && 0}{time.hours}:{time.minutes <= 9 && 0}{time.minutes}:{time.seconds <= 9 && 0}{time.seconds}
                 </p>
             )
         } else if (timeFormat === "12") {
             return (
-                <p className="time-live">
+                <p className="time_live">
                     {time.hours <= 9 && 0}{time.hours >= 12 ? time.hours - 12 : time.hours}:{time.minutes <= 9 && 0}{time.minutes}:{time.seconds <= 9 && 0}{time.seconds} {time.hours >=12 ? "pm" : "am"}
                 </p>
             )
