@@ -15,14 +15,20 @@ export default function Settings() {
     //Fetch unsplash Backgrounds
     const [backgrounds, setBackgrounds] = useState([]);
     const [modal, setModal] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const fetchBackgrounds = async (currentPage, query = refContainer.current.value) => {
+        //show Loading
+        setLoading(true);
+
         unsplash.search.getPhotos({
             query: query,
             page: currentPage,
             perPage: 28,
             orientation: 'landscape',
         }).then(data => {
+            //Remove Laoding
+            setLoading(false);
             //if there is no images found 
             if(data.response.total === 0) {
                 setModal(true);
@@ -37,10 +43,16 @@ export default function Settings() {
     const refContainer = useRef(null);
 
     const handleSubmit = (e) => {
+        e.preventDefault();
+        //if Modal is on remove modal
         if(modal){
             setModal(false);
         }
-        e.preventDefault();
+        //reset background to empty array
+        if (backgrounds) {
+            setBackgrounds([]);
+        }
+
         fetchBackgrounds(1, refContainer.current.value);
     };
 
@@ -58,7 +70,7 @@ export default function Settings() {
                     <button className="close" onClick={closeModal}>close me</button>
                     
                     <h2>Settings</h2>     
-                    <article className={backgrounds.length > 0 || modal ? "settings__main extra_padding" : "settings__main"}>
+                    <article className={backgrounds.length > 0 || modal || loading? "settings__main extra_padding" : "settings__main"}>
                         {/* Dark Mode*/}
                         <div className="settings__main__field">
                             <p className="settings__label">Mode</p>
@@ -144,12 +156,18 @@ export default function Settings() {
                                     backgrounds={backgrounds}
                                     fetchBackgrounds={fetchBackgrounds}
                                     ChangeBackground={ChangeBackground}
+                                    loading={loading}
                                 />
                             )}
                             {modal && (
                                 <p>No results found!</p>
                             )}
                         </div>
+                        {loading && (
+                            <div className="loading-wrapper">
+                                <p>Loading ...</p>
+                            </div>
+                        )}
                     </article>
                 </section>
             }

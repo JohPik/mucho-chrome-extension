@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function FetchedImages({ backgrounds, fetchBackgrounds, ChangeBackground }){
+export default function FetchedImages({ backgrounds, fetchBackgrounds, ChangeBackground, loading }){
 
     const [currentPage, setCurrentPage] = useState(2);
 
@@ -17,9 +17,11 @@ export default function FetchedImages({ backgrounds, fetchBackgrounds, ChangeBac
                     <img src={img.urls.thumb} alt={img.alt_description} />
                 </div>
             )}
-            <div className="load-more-wrapper">
-                <button onClick={fetchMoreImages}>Load More images</button>
-            </div>
+            {!loading && (
+                <div className="load-more-wrapper">
+                    <button onClick={fetchMoreImages}>Load More images</button>
+                </div>
+            )}
         </>
 
     )

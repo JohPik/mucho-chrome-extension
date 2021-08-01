@@ -269,6 +269,8 @@ blockquote p::after {
   position: relative;
   width: max-content;
   margin: auto;
+  font-weight: bold;
+  letter-spacing: 0.05em;
 }
 
 .bookmark p::after {
@@ -575,18 +577,19 @@ input:checked + .slider:before {
   background-color: var(--clr-dark-900);
 }
 
-/****** Unsplash backgrounds ******/
-
-/* DELETE ME */
-.settings button.temp {
-  color: white;
-  font-weight: bold;
-  position: absolute;
-  right: 0;
-  top: 50%;
+/****** Loading ******/
+.loading-wrapper {
+  padding-top: 20px;
 }
-/* ************ */
 
+.loading-wrapper p {
+  color: var(--clr-white);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/****** Unsplash backgrounds ******/
 .background-wrapper {
   height: auto;
   max-height: 300px;
