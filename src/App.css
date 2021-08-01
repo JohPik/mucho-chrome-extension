@@ -47,17 +47,24 @@ button:hover {
 }
 
 .main {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding: 3.75rem 3.125rem;
   color: var(--clr-white);
-  letter-spacing: 0.1em;
+}
+
+/*** HEADER - Quote + Clock***/
+header {
+  padding: 3.75rem 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: var(--clr-white);
 }
 
 /* quote */
@@ -94,7 +101,8 @@ blockquote p::after {
 .features {
   max-width: 600px;
   width: 100%;
-  padding-top: 15%;
+  padding-top: 32vh;
+  margin: auto;
 }
 
 .features .search input {
@@ -374,7 +382,7 @@ footer .photo_copyright a {
   color: var(--clr-white);
   text-align: center;
   padding: 3.75rem 3.125rem;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   opacity: 0.95;
   text-transform: capitalize;
@@ -386,7 +394,11 @@ footer .photo_copyright a {
 }
 
 .settings h2 {
+  margin-top: 3.75rem;
   font-weight: 300;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .settings button.close {
@@ -401,6 +413,13 @@ footer .photo_copyright a {
   max-width: 700px;
   margin: auto;
   margin-top: 3.75rem;
+  box-shadow: 0px 2px 0px 0px rgb(255 255 255 / 10%);
+  transition: none;
+}
+
+.settings__main.extra_padding {
+  padding-bottom: 20px;
+  transition: none;
 }
 
 .settings__main__field {
@@ -509,6 +528,10 @@ input:checked + .slider:before {
   background: var(--clr-white-800);
 }
 
+.light-mode.features .search button::before {
+  background: var(--clr-white-400);
+}
+
 .light-mode .bookmarks__navigation li button,
 .light-mode .bookmark a {
   color: var(--clr-dark-900);
@@ -565,7 +588,8 @@ input:checked + .slider:before {
 /* ************ */
 
 .background-wrapper {
-  height: 300px;
+  height: auto;
+  max-height: 300px;
   width: calc(100% - 10px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

@@ -11,7 +11,7 @@ export default function FetchedImages({ backgrounds, fetchBackgrounds, ChangeBac
     };
 
     return(
-        <div className="background-wrapper">
+        <>
             {backgrounds.map(img =>
                 <div className="single-wrapper" key={img.id} onClick={() => ChangeBackground(img)}>
                     <img src={img.urls.thumb} alt={img.alt_description} />
@@ -20,6 +20,7 @@ export default function FetchedImages({ backgrounds, fetchBackgrounds, ChangeBac
             <div className="load-more-wrapper">
                 <button onClick={fetchMoreImages}>Load More images</button>
             </div>
-        </div>
+        </>
+
     )
 };

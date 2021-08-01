@@ -1,7 +1,9 @@
 import React from 'react'
-import Quote from './Quote';
+import Header from './Header';
 import Features from './Features';
-import Times from './Times';
+import Footer from './Footer';
+
+
 import { useGlobalContext } from '../context';
 
 export default function Main() {
@@ -10,10 +12,10 @@ export default function Main() {
     let img = backGround.urls.regular;
 
     return (
-        <div className="main" style={{ backgroundImage: `url(${img})`}}>
-            <Quote />
+        <section className="main" style={{ backgroundImage: `url(${img})`}}>
+            <Header />
             <Features />
-            <Times />
-        </div>
+            <Footer />
+        </section>
     )
 }

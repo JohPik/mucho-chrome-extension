@@ -45,21 +45,20 @@ export default function Settings() {
     };
 
     //handle closing modal
-
     const closeModal = () => {
         setBackgrounds([]);
         closeSettings();
-    }
+    };
 
     return (
         <>
             {
                 isSettingsOpen &&
                 <section className={isDarkModeOff ? "settings light-mode" : "settings"}>
-                    <h2>Settings</h2>
                     <button className="close" onClick={closeModal}>close me</button>
-
-                    <article className="settings__main">
+                    
+                    <h2>Settings</h2>     
+                    <article className={backgrounds.length > 0 || modal ? "settings__main extra_padding" : "settings__main"}>
                         {/* Dark Mode*/}
                         <div className="settings__main__field">
                             <p className="settings__label">Mode</p>
@@ -139,16 +138,18 @@ export default function Settings() {
                                 </form>
                             </div>
                         </div>
-                        {backgrounds.length > 0 && (
-                            < FetchedImages
-                                backgrounds={backgrounds} 
-                                fetchBackgrounds={fetchBackgrounds} 
-                                ChangeBackground={ChangeBackground}
-                            />
-                        )}
-                        {modal && (
-                            <p>No results found!</p>
-                        )}
+                        <div className="background-wrapper">
+                            {backgrounds.length > 0 && (
+                                < FetchedImages
+                                    backgrounds={backgrounds}
+                                    fetchBackgrounds={fetchBackgrounds}
+                                    ChangeBackground={ChangeBackground}
+                                />
+                            )}
+                            {modal && (
+                                <p>No results found!</p>
+                            )}
+                        </div>
                     </article>
                 </section>
             }
