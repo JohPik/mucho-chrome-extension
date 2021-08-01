@@ -3,12 +3,19 @@ import { useGlobalContext } from '../context';
 
 export default function Footer() {
     
-    const { openSettings } = useGlobalContext();
-    
+    const { openSettings, settingsState } = useGlobalContext();
+    const { backGround } = settingsState;
+
+    let link = backGround.links.html;
+    let author = backGround.user.name;
+
+    console.log(backGround);
+
     return (
         <footer>
             <button className="settings__button" onClick={openSettings}></button>
-            <div className="photo_copyright">Photo by Pawel Czerwinski</div>
+            <div className="photo_copyright">Photo by <a href={link}>{author}</a>
+            </div>
         </footer>
     )
 }

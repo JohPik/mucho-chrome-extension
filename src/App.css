@@ -52,7 +52,6 @@ button:hover {
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
-  background-image: url('./img/pink-fluid-min.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -76,6 +75,11 @@ button:hover {
 
 .quote figcaption {
   font-size: 0.625rem;
+}
+
+.quote figcaption a {
+  font-weight: bold;
+  color: var(--clr-white);
 }
 
 blockquote p::before {
@@ -304,6 +308,7 @@ blockquote p::after {
   text-align: right;
   text-shadow: var(--text-shadow);
   font-size: 1.5625rem;
+  letter-spacing: 0.1em;
 }
 
 .date {
@@ -314,6 +319,7 @@ blockquote p::after {
 
 .time_live {
   padding-bottom: 0.225rem;
+  padding-bottom: 0.3rem;
 }
 
 .time_zone {
@@ -348,6 +354,13 @@ footer .settings__button::before {
 footer .photo_copyright {
   font-size: 0.625rem;
   text-shadow: var(--text-shadow);
+  letter-spacing: 0.1em;
+}
+
+footer .photo_copyright a {
+  font-weight: bold;
+  color: var(--clr-white);
+  text-decoration: none;
 }
 
 /****** Settings (Modal) ******/

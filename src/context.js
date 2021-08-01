@@ -1,14 +1,23 @@
 import React, {useState, useContext, useReducer, useEffect} from 'react';
 import settingsReducer from './settingsReducer';
+import backgroundImage from './img/pink-fluid-min.jpg'
 
 const AppContext = React.createContext();
+
+const defaultBackground = {
+    id: "default",
+    user: { name: "Pawel Czerwinski"},
+    links: { html: "https://unsplash.com/photos/ruJm3dBXCqw" },
+    urls: { regular: backgroundImage}
+
+}
 
 const initialSettingsState = {
     isDarkModeOff: false,
     timeFormat: "24",
     isQuoteDisable: false,
     quoteTheme: "all",
-    backGround: {}
+    backGround: defaultBackground
 };
 
 const AppProvider = ({ children }) => {

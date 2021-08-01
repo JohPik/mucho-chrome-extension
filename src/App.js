@@ -2,9 +2,7 @@
 import React from 'react';
 import './App.css';
 import Settings from './components/Settings';
-import Quote from './components/Quote';
-import Features from './components/Features';
-import Times from './components/Times';
+import Main from './components/Main';
 import Footer from './components/Footer';
 import FadeIn from './components/FadeIn';
 
@@ -13,11 +11,7 @@ function App() {
     <>
     <FadeIn>
       <Settings />
-      <div className="main">
-        <Quote />
-        <Features />
-        <Times />
-      </div>
+        <Main/>
         <Footer/>
       </FadeIn>
     </>
