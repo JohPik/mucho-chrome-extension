@@ -403,12 +403,20 @@ footer .photo_copyright a {
   letter-spacing: 0.1em;
 }
 
-.settings button.close {
+.settings button.close__modal {
   position: absolute;
   top: 0;
   right: 0;
   padding: 3.75rem 3.125rem;
   color: red;
+}
+
+.settings button.reset-default {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 3.75rem 3.125rem;
+  color: var(--clr-white-800);
 }
 
 .settings__main {
@@ -512,8 +520,26 @@ footer .photo_copyright a {
   bottom: -2.5px;
 }
 
+/*** /Original Switch 
 input:checked + .slider:before {
   transform: translateX(calc(100% + 2px));
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+***/
+
+.switch.on input + .slider:before {
+  transform: translateX(calc(100% + 2px));
+}
+
+.switch.on input + .slider {
+  background-color: #2196f3;
+}
+
+.switch.off input + .slider:before {
+  transform: initial;
 }
 
 /****** Light Mode ******/
@@ -640,13 +666,4 @@ input:checked + .slider:before {
   background-color: var(--clr-white);
   margin-left: 20px;
   border-radius: 6px;
-}
-
-/* To change */
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
 }

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useGlobalContext } from '../context';
+import ResetDefaultSettings from './ResetDefaultSettings';
 import FetchedImages from './FetchedImages';
 import { createApi } from 'unsplash-js';
 
@@ -9,7 +10,7 @@ const unsplash = createApi({
 
 export default function Settings() {
     
-    const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme, ChangeBackground} = useGlobalContext();
+    const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme, ChangeBackground, ResetToDefault} = useGlobalContext();
     const { isDarkModeOff, timeFormat, isQuoteDisable, quoteTheme} = settingsState;
 
     //Fetch unsplash Backgrounds
@@ -62,13 +63,13 @@ export default function Settings() {
         closeSettings();
     };
 
+    console.log("timeFormat", timeFormat)
     return (
         <>
             {
                 isSettingsOpen &&
                 <section className={isDarkModeOff ? "settings light-mode" : "settings"}>
-                    <button className="close" onClick={closeModal}>close me</button>
-                    
+                    <button className="close__modal" onClick={closeModal}>close me</button>
                     <h2>Settings</h2>     
                     <article className={backgrounds.length > 0 || modal || loading? "settings__main extra_padding" : "settings__main"}>
                         {/* Dark Mode*/}
@@ -77,7 +78,7 @@ export default function Settings() {
                             <div className="settings__action__container">
                                 <span>dark</span>
                                 <div className="toggleSwitch">
-                                    <label className="switch">
+                                    <label className={isDarkModeOff ? ("switch on") : ("switch off")}>
                                         <input type="checkbox" defaultChecked={isDarkModeOff} onChange={toggleDarkMode}/>
                                         <span className="slider"></span>
                                     </label>
@@ -101,7 +102,7 @@ export default function Settings() {
                             <div className="settings__action__container">
                                 <span>off</span>
                                 <div className="toggleSwitch">
-                                    <label className="switch">
+                                    <label className={ isQuoteDisable ? ("switch on") : ("switch off")}>
                                         <input type="checkbox" defaultChecked={isQuoteDisable} onChange={disableQuote}/>
                                         <span className="slider"></span>
                                     </label>
@@ -152,7 +153,7 @@ export default function Settings() {
                         </div>
                         <div className="background-wrapper">
                             {backgrounds.length > 0 && (
-                                < FetchedImages
+                                <FetchedImages
                                     backgrounds={backgrounds}
                                     fetchBackgrounds={fetchBackgrounds}
                                     ChangeBackground={ChangeBackground}
@@ -169,6 +170,7 @@ export default function Settings() {
                             </div>
                         )}
                     </article>
+                    <ResetDefaultSettings settingsState={settingsState} ResetToDefault={ResetToDefault} />
                 </section>
             }
         </>
