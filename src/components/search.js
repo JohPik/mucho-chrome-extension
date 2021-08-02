@@ -1,5 +1,5 @@
 /*global chrome*/
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 
 const Search = () => {
     
@@ -12,7 +12,6 @@ const Search = () => {
             text: query
         });
     };
-
 
     return (
         <div className='search'>

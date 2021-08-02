@@ -9,8 +9,6 @@ export default function Footer() {
     let link = backGround.links.html;
     let author = backGround.user.name;
 
-    console.log(backGround);
-
     return (
         <footer>
             <button className="settings__button" onClick={openSettings}></button>
