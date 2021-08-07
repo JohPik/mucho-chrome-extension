@@ -1,14 +1,14 @@
+/*global chrome*/
 import React, { useRef, useState, useEffect } from 'react';
 import { useGlobalContext } from '../../context';
 import ResetDefaultSettings from './ResetDefaultSettings';
 import { createApi } from 'unsplash-js';
 import FetchedBackgrounds from './FetchedBackgrounds';
 
-//Unsplash Keuy
+//Unsplash Key
 const unsplash = createApi({
     accessKey: process.env.REACT_APP_UNSPLASH_KEY
 });
-
 
 export default function Settings() {
     //State and Method from Context
@@ -19,6 +19,7 @@ export default function Settings() {
     const [backgrounds, setBackgrounds] = useState([]);
     const [noResultModal, setNoResultModal] = useState(false);
     const [loading, setLoading] = useState(false);
+
 
     //Fetch unsplash Backgrounds
     const fetchBackgrounds = async (currentPage, query = refContainer.current.value) => {
