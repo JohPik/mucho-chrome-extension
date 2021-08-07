@@ -609,6 +609,25 @@ input:checked + .slider {
   background-color: var(--clr-dark-900);
 }
 
+.light-mode .settings__main {
+  box-shadow: 0px 2px 0px 0px rgb(20 20 20 / 10%);
+}
+
+.light-mode .current-background p,
+.light-mode .current-background a,
+.light-mode .load-more-wrapper p,
+.light-mode .load-more-wrapper button,
+.light-mode .load-more-wrapper span {
+  color: var(--clr-dark-900);
+}
+.light-mode .load-more-wrapper button {
+  border: solid 1px var(--clr-dark-900);
+}
+
+.light-mode button.reset-default {
+  color: var(--clr-dark-900);
+}
+
 /****** Current Background ******/
 .current-background {
   display: grid;
