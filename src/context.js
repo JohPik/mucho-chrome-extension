@@ -1,6 +1,6 @@
 import React, {useState, useContext, useReducer} from 'react';
-import settingsReducer from './settings/settingsReducer';
-import { initialSettingsState } from './settings/settingsState';
+import settingsReducer from './settingsStateMgment/settingsReducer';
+import { initialSettingsState } from './settingsStateMgment/settingsState';
 
 
 const AppContext = React.createContext();

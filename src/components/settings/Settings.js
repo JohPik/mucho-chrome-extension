@@ -1,23 +1,26 @@
-import React, { useRef, useState } from 'react';
-import { useGlobalContext } from '../context';
+import React, { useRef, useState, useEffect } from 'react';
+import { useGlobalContext } from '../../context';
 import ResetDefaultSettings from './ResetDefaultSettings';
-import FetchedImages from './FetchedImages';
 import { createApi } from 'unsplash-js';
+import FetchedBackgrounds from './FetchedBackgrounds';
 
+//Unsplash Keuy
 const unsplash = createApi({
     accessKey: process.env.REACT_APP_UNSPLASH_KEY
 });
 
-export default function Settings() {
-    
-    const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme, ChangeBackground, ResetToDefault} = useGlobalContext();
-    const { isDarkModeOff, timeFormat, isQuoteDisable, quoteTheme} = settingsState;
 
-    //Fetch unsplash Backgrounds
+export default function Settings() {
+    //State and Method from Context
+    const {isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme, ChangeBackground, ResetToDefault} = useGlobalContext();
+    const {isDarkModeOff, timeFormat, isQuoteDisable, quoteTheme, backGround} = settingsState;
+
+    //Component State
     const [backgrounds, setBackgrounds] = useState([]);
-    const [modal, setModal] = useState(false);
+    const [noResultModal, setNoResultModal] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    //Fetch unsplash Backgrounds
     const fetchBackgrounds = async (currentPage, query = refContainer.current.value) => {
         //show Loading
         setLoading(true);
@@ -32,7 +35,10 @@ export default function Settings() {
             setLoading(false);
             //if there is no images found 
             if(data.response.total === 0) {
-                setModal(true);
+                setNoResultModal(true);
+                setTimeout(() => {
+                    setNoResultModal(false);
+                }, 2000);
             } else {
                 const newBackgrounds = data.response.results;
                 currentPage === 1 ? setBackgrounds(newBackgrounds) : setBackgrounds([...backgrounds].concat(newBackgrounds));
@@ -45,40 +51,48 @@ export default function Settings() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //if Modal is on remove modal
-        if(modal){
-            setModal(false);
+        if (refContainer.current.value.length !== 0) {
+            //if Modal is on remove noResultModal
+            if (noResultModal) {
+                setNoResultModal(false);
+            }
+            //reset background to empty array
+            if (backgrounds) {
+                setBackgrounds([]);
+            }
+            //Fetch Backgrounds
+            fetchBackgrounds(1, refContainer.current.value);
         }
-        //reset background to empty array
-        if (backgrounds) {
-            setBackgrounds([]);
-        }
-
-        fetchBackgrounds(1, refContainer.current.value);
     };
 
-    //handle closing modal
+    //handle closing noResultModal
     const closeModal = () => {
         setBackgrounds([]);
+        setNoResultModal(false);
         closeSettings();
     };
 
-    console.log("timeFormat", timeFormat)
+    //when new background is selected reset FetchedBackground Views
+    useEffect(() => {
+        setBackgrounds([])
+    }, [backGround])
+
+    
     return (
         <>
             {
                 isSettingsOpen &&
                 <section className={isDarkModeOff ? "settings light-mode" : "settings"}>
-                    <button className="close__modal" onClick={closeModal}>close me</button>
+                    <button className="close__settings" onClick={closeModal}/>
                     <h2>Settings</h2>     
-                    <article className={backgrounds.length > 0 || modal || loading? "settings__main extra_padding" : "settings__main"}>
+                    <article className={backgrounds.length > 0 || noResultModal || loading ? "settings__main extra_padding" : "settings__main"}>
                         {/* Dark Mode*/}
                         <div className="settings__main__field">
                             <p className="settings__label">Mode</p>
                             <div className="settings__action__container">
                                 <span>dark</span>
                                 <div className="toggleSwitch">
-                                    <label className={isDarkModeOff ? ("switch on") : ("switch off")}>
+                                    <label className={ isDarkModeOff ? ("switch on") : ("switch off")}>
                                         <input type="checkbox" defaultChecked={isDarkModeOff} onChange={toggleDarkMode}/>
                                         <span className="slider"></span>
                                     </label>
@@ -151,26 +165,19 @@ export default function Settings() {
                                 </form>
                             </div>
                         </div>
-                        <div className="background-wrapper">
-                            {backgrounds.length > 0 && (
-                                <FetchedImages
-                                    backgrounds={backgrounds}
-                                    fetchBackgrounds={fetchBackgrounds}
-                                    ChangeBackground={ChangeBackground}
-                                    loading={loading}
-                                />
-                            )}
-                            {modal && (
-                                <p>No results found!</p>
-                            )}
-                        </div>
-                        {loading && (
-                            <div className="loading-wrapper">
-                                <p>Loading ...</p>
-                            </div>
-                        )}
+                        <FetchedBackgrounds
+                            backGround={backGround}
+                            backgrounds={backgrounds} 
+                            noResultModal={noResultModal}
+                            fetchBackgrounds={fetchBackgrounds}
+                            ChangeBackground={ChangeBackground}
+                            loading={loading}
+                        />
                     </article>
-                    <ResetDefaultSettings settingsState={settingsState} ResetToDefault={ResetToDefault} />
+                    <ResetDefaultSettings 
+                        settingsState={settingsState} 
+                        ResetToDefault={ResetToDefault} 
+                    />
                 </section>
             }
         </>

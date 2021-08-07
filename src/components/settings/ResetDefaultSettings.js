@@ -1,5 +1,5 @@
 import React from 'react'
-import { defaultState } from "../settings/settingsState"
+import { defaultState } from "../../settingsStateMgment/settingsState"
 
 export default function ResetDefaultSettings({ settingsState, ResetToDefault }) {
     return (
