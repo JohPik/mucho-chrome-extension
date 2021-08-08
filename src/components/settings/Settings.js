@@ -1,4 +1,3 @@
-/*global chrome*/
 import React, { useRef, useState, useEffect } from 'react';
 import { useGlobalContext } from '../../context';
 import ResetDefaultSettings from './ResetDefaultSettings';

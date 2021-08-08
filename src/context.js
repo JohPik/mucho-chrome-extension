@@ -1,13 +1,14 @@
-import React, {useState, useContext, useReducer} from 'react';
+/*global chrome*/
+import React, {useState, useEffect, useContext, useReducer} from 'react';
 import settingsReducer from './settingsStateMgment/settingsReducer';
-import { initialSettingsState } from './settingsStateMgment/settingsState';
+import { defaultState } from './settingsStateMgment/settingsState';
 
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    
-    // MODAL - Settings State and Methods
+
+    /*** Modal - Settings State and Methods ***/
     const [isSettingsOpen, setSettingsOpen] = useState(false);
 
     const openSettings = () => {
@@ -18,14 +19,14 @@ const AppProvider = ({ children }) => {
         setSettingsOpen(false);
     };
 
-    // APP Settings
-    const [settingsState, dispatch] = useReducer(settingsReducer, initialSettingsState);
+    /*** App Settings Management ***/
+    const [settingsState, dispatch] = useReducer(settingsReducer, defaultState);
 
     const toggleDarkMode = () => {
-        dispatch({type: 'TOGGLE_DARK_MODE'})
+        dispatch({ type: 'TOGGLE_DARK_MODE'})
     };
 
-    const changeTimeFormat = (timeValue) => {
+    const changeTimeFormat = timeValue => {
         dispatch({ type: 'CHANGE_TIME_FORMAT', payload: timeValue})
     };
 
@@ -33,17 +34,36 @@ const AppProvider = ({ children }) => {
         dispatch({ type: "DISABLE_QUOTE"})
     };
 
-    const ChangeQuoteTheme = (theme) => {
+    const ChangeQuoteTheme = theme => {
         dispatch({ type: "CHANGE_QUOTE_THEME", payload: theme})
     };
 
-    const ChangeBackground = (img) => {
+    const ChangeBackground = img => {
         dispatch({ type: "CHANGE_BACKGROUND", payload: img })
     };
 
     const ResetToDefault = () => {
         dispatch({ type: "RESET_TO_DEFAULT"})
     };
+
+    /*** Chrome User Setting Management ***/
+    //Looks for saved Settings on Chrome first time App is Rendered
+    useEffect(() => {
+        chrome.storage.sync.get(['MUCHO_CHROME_SETTINGS'], result => {
+            const userSettings = result.MUCHO_CHROME_SETTINGS;
+            // if saved Settings => saved them to state
+            // else => Saved defaultState as Settings in Chrome
+            userSettings ? (
+                dispatch({ type: 'GET_EXISTING_CHROME_SETTINGS', payload: userSettings })
+            ) : (
+                chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...defaultState } })
+            );
+        });
+    }, [])
+    //Saves updated settings to Chrome
+    useEffect(() => {
+        chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...settingsState } });
+    }, [settingsState])
 
     return (
         <AppContext.Provider value={{ 

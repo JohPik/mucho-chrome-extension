@@ -2,6 +2,10 @@ import { defaultState } from './settingsState';
 
 const settingsReducer = (state, action) => {
 
+    if(action.type === "GET_EXISTING_CHROME_SETTINGS"){
+        return {...action.payload}
+    }
+
     if (action.type === "TOGGLE_DARK_MODE"){
         return { ...state, isDarkModeOff: !state.isDarkModeOff };
     }

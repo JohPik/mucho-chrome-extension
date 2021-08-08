@@ -1,4 +1,3 @@
-/*global chrome*/
 import backgroundImage from '../img/pink-fluid-min.jpg';
 
 const defaultState = {
@@ -14,6 +13,4 @@ const defaultState = {
     }
 };
 
-const initialSettingsState = { ...defaultState };
-
-export { initialSettingsState, defaultState };
+export { defaultState };
