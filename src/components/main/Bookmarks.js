@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
-import threeDots from '../img/three-dots.svg';
-import Tabs from '../utilities';
+import threeDots from '../../img/three-dots.svg';
+import Tabs from '../../utilities';
 
 export default function Bookmarks() {
 

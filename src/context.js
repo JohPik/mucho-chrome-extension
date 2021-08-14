@@ -45,12 +45,7 @@ const AppProvider = ({ children }) => {
     const ResetToDefault = () => {
         dispatch({ type: "RESET_TO_DEFAULT"})
     };
-
-    //CLEAR ALL
-    // useEffect(() => {
-    //     chrome.storage.sync.clear();
-    // }, [])
-
+    
     /*** Chrome User Setting Management ***/
     //Looks for saved Settings on Chrome first time App is Rendered
     useEffect(() => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Search from './Search'
 import Bookmarks from './Bookmarks'
-import { useGlobalContext } from '../context';
+import { useGlobalContext } from '../../context';
 
 export default function Features() {
     

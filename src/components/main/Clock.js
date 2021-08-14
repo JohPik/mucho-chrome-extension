@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useGlobalContext } from '../context';
+import { useGlobalContext } from '../../context';
 
 export default function Clock() {
 
