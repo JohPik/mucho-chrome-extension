@@ -9,10 +9,8 @@ import { useGlobalContext } from '../context';
 export default function Main() {
     const { settingsState } = useGlobalContext();
     const { backGround } = settingsState;
-    let img = backGround.urls.regular;
-
     return (
-        <section className="main" style={{ backgroundImage: `url(${img})`}}>
+        <section className="main" style={{ backgroundImage: `url(${backGround.img})`}}>
             <Header />
             <Features />
             <Footer />

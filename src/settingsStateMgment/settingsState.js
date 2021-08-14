@@ -7,9 +7,9 @@ const defaultState = {
     quoteTheme: "all",
     backGround: {
         id: "default",
-        user: { name: "Pawel Czerwinski" },
-        links: { html: "https://unsplash.com/photos/ruJm3dBXCqw" },
-        urls: { regular: backgroundImage }
+        photographer: "Pawel Czerwinski",
+        url: "https://unsplash.com/photos/ruJm3dBXCqw",
+        img: backgroundImage
     }
 };
 

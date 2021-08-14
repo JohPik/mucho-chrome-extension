@@ -46,6 +46,11 @@ const AppProvider = ({ children }) => {
         dispatch({ type: "RESET_TO_DEFAULT"})
     };
 
+    //CLEAR ALL
+    // useEffect(() => {
+    //     chrome.storage.sync.clear();
+    // }, [])
+
     /*** Chrome User Setting Management ***/
     //Looks for saved Settings on Chrome first time App is Rendered
     useEffect(() => {
@@ -60,6 +65,7 @@ const AppProvider = ({ children }) => {
             );
         });
     }, [])
+
     //Saves updated settings to Chrome
     useEffect(() => {
         chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...settingsState } });

@@ -6,13 +6,12 @@ export default function Footer() {
     const { openSettings, settingsState } = useGlobalContext();
     const { backGround } = settingsState;
 
-    let link = backGround.links.html;
-    let author = backGround.user.name;
-
+    let { url, photographer } = backGround;
+    
     return (
         <footer>
             <button className="settings__button" onClick={openSettings}></button>
-            <div className="photo_copyright">Photo by <a href={link}>{author}</a>
+            <div className="photo_copyright">Photo by <a href={url}>{photographer}</a>
             </div>
         </footer>
     )

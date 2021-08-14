@@ -10,6 +10,18 @@ export default function FetchedBackgrounds({ backGround, backgrounds, noResultMo
         setCurrentPage(currentPage + 1);
     };
 
+    const handleChange = rawObjectBackground => {
+        let { id, user, links, urls } = rawObjectBackground;
+        const newBackGround = { 
+            id: id,
+            photographer: user.name,
+            url: links.html,
+            img: urls.regular
+        };
+        ChangeBackground(newBackGround);
+    };
+
+/****** CONDITIONAL RENDERGINS *******/
     // if Loading and no background have been fetched already
     if (loading && backgrounds.length === 0  ) {
         return (
@@ -36,7 +48,7 @@ export default function FetchedBackgrounds({ backGround, backgrounds, noResultMo
         return (
             <div className = "backgrounds-wrapper" >
                 { backgrounds.map(img =>
-                    <div className="single-wrapper" key={img.id} onClick={() => ChangeBackground(img)}>
+                    <div className="single-wrapper" key={img.id} onClick={() => handleChange(img)}>
                         <img src={img.urls.thumb} alt={img.alt_description} />
                         </div>
                 )}
@@ -53,8 +65,7 @@ export default function FetchedBackgrounds({ backGround, backgrounds, noResultMo
             </div>
         )
     };
-
-    return (
-        <CurrentBackground backGround={backGround} />
-)
+    
+    // Default => return Current Img Background
+    return <CurrentBackground backGround={backGround} />
 }
