@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SettingsProvider } from './contextSettings';
+import { TabsProvider } from './contextTabs';
 
 ReactDOM.render(
   <React.StrictMode>
     <SettingsProvider>
-      <App />
+      <TabsProvider>
+        <App />
+      </TabsProvider>
     </SettingsProvider>
   </React.StrictMode>,
   document.getElementById('root')

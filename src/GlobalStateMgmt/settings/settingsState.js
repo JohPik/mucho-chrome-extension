@@ -1,4 +1,4 @@
-import backgroundImage from '../img/pink-fluid-min.jpg';
+import backgroundImage from '../../img/pink-fluid-min.jpg';
 
 const defaultState = {
     isDarkModeOff: false,

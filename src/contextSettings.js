@@ -1,7 +1,7 @@
 /*global chrome*/
 import React, {useState, useEffect, useContext, useReducer} from 'react';
-import settingsReducer from './settingsStateMgment/settingsReducer';
-import { defaultState } from './settingsStateMgment/settingsState';
+import settingsReducer from './GlobalStateMgmt/settings/settingsReducer';
+import { defaultState } from './GlobalStateMgmt/settings/settingsState';
 
 
 const SettingsContext = React.createContext();

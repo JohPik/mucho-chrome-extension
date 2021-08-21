@@ -1,15 +1,17 @@
 import React, { useState, useEffect} from 'react';
 import threeDots from '../../img/three-dots.svg';
 import Tabs from '../../utilities';
+import { useTabsContext } from '../../contextTabs';
 
 export default function Bookmarks() {
 
     const [currentTab, setCurrentTab] = useState(null);
-    const [tabNav] = useState(Tabs);
+
+    const { tabsState } = useTabsContext();
 
     useEffect( () => {
-        setCurrentTab(tabNav[0]);
-    }, [tabNav]);
+        setCurrentTab(tabsState[0]);
+    }, [tabsState]);
 
     if (!currentTab){
         return(
@@ -23,7 +25,7 @@ export default function Bookmarks() {
             <div className="bookmarks__navigation">
                 <ul>
                     {
-                        tabNav.map( tab => 
+                        tabsState.map( tab =>
                                 <li key={tab.id} className={tab.id === currentTab.id ? "active" : null}>
                                     <button onClick={() => setCurrentTab(tab)}>
                                         {tab.name}
