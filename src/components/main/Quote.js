@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback }  from 'react';
-import { useSettingsContext } from '../../context';
+import { useSettingsContext } from '../../contextSettings';
 
 function Block({quoteTheme}) {
     const [quote, setQuote] = useState("");

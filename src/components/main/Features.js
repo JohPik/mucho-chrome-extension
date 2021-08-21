@@ -1,7 +1,7 @@
 import React from 'react'
 import Search from './Search'
 import Bookmarks from './Bookmarks'
-import { useSettingsContext } from '../../context';
+import { useSettingsContext } from '../../contextSettings';
 
 export default function Features() {
     

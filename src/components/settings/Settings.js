@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useSettingsContext } from '../../context';
+import { useSettingsContext } from '../../contextSettings';
 import ResetDefaultSettings from './ResetDefaultSettings';
 import { createApi } from 'unsplash-js';
 import FetchedBackgrounds from './FetchedBackgrounds';
