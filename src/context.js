@@ -4,9 +4,9 @@ import settingsReducer from './settingsStateMgment/settingsReducer';
 import { defaultState } from './settingsStateMgment/settingsState';
 
 
-const AppContext = React.createContext();
+const SettingsContext = React.createContext();
 
-const AppProvider = ({ children }) => {
+const SettingsProvider = ({ children }) => {
 
     /*** Modal - Settings State and Methods ***/
     const [isSettingsOpen, setSettingsOpen] = useState(false);
@@ -47,6 +47,7 @@ const AppProvider = ({ children }) => {
     };
     
     /*** Chrome User Setting Management ***/
+/*
     //Looks for saved Settings on Chrome first time App is Rendered
     useEffect(() => {
         chrome.storage.sync.get(['MUCHO_CHROME_SETTINGS'], result => {
@@ -65,9 +66,9 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...settingsState } });
     }, [settingsState])
-
+*/
     return (
-        <AppContext.Provider value={{ 
+        <SettingsContext.Provider value={{
             isSettingsOpen, 
             openSettings, 
             closeSettings, 
@@ -80,11 +81,11 @@ const AppProvider = ({ children }) => {
             ResetToDefault}}
             >
             {children}
-        </AppContext.Provider>
+        </SettingsContext.Provider>
     ) 
 };
 
-const useGlobalContext = () => useContext(AppContext);
+const useSettingsContext = () => useContext(SettingsContext);
 
-export { AppContext, AppProvider, useGlobalContext};
+export { SettingsContext, SettingsProvider, useSettingsContext};
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import { useGlobalContext } from '../../context';
+import { useSettingsContext } from '../../context';
 
 export default function Footer() {
     
-    const { openSettings, settingsState } = useGlobalContext();
+    const { openSettings, settingsState } = useSettingsContext();
     const { backGround } = settingsState;
 
     let { url, photographer } = backGround;

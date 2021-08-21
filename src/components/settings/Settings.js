@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useGlobalContext } from '../../context';
+import { useSettingsContext } from '../../context';
 import ResetDefaultSettings from './ResetDefaultSettings';
 import { createApi } from 'unsplash-js';
 import FetchedBackgrounds from './FetchedBackgrounds';
@@ -11,7 +11,7 @@ const unsplash = createApi({
 
 export default function Settings() {
     //State and Method from Context
-    const {isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme, ChangeBackground, ResetToDefault} = useGlobalContext();
+    const { isSettingsOpen, closeSettings, settingsState, toggleDarkMode, changeTimeFormat, disableQuote, ChangeQuoteTheme, ChangeBackground, ResetToDefault } = useSettingsContext();
     const {isDarkModeOff, timeFormat, isQuoteDisable, quoteTheme, backGround} = settingsState;
 
     //Component State

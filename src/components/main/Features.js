@@ -1,11 +1,11 @@
 import React from 'react'
 import Search from './Search'
 import Bookmarks from './Bookmarks'
-import { useGlobalContext } from '../../context';
+import { useSettingsContext } from '../../context';
 
 export default function Features() {
     
-    const { settingsState } = useGlobalContext();
+    const { settingsState } = useSettingsContext();
     const { isDarkModeOff } = settingsState;
     
     return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback }  from 'react';
-import { useGlobalContext } from '../../context';
+import { useSettingsContext } from '../../context';
 
 function Block({quoteTheme}) {
     const [quote, setQuote] = useState("");
@@ -41,7 +41,7 @@ function Block({quoteTheme}) {
 }
 
 export default function Quote() {
-    const { settingsState } = useGlobalContext();
+    const { settingsState } = useSettingsContext();
     const { isQuoteDisable, quoteTheme } = settingsState;
 
     return (

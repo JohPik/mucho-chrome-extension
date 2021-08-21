@@ -38,21 +38,26 @@ button:hover {
 /****** Main Section ******/
 #root {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .fade-in-wrapper {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .main {
   height: 100%;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 50%;
   background-size: cover;
-  color: var(--clr-white);
 }
 
 /*** HEADER - Quote + Clock***/
@@ -101,7 +106,6 @@ blockquote p::after {
 .features {
   max-width: 600px;
   width: 100%;
-  padding-top: 32vh;
   margin: auto;
 }
 
@@ -385,6 +389,7 @@ footer .photo_copyright a {
   text-align: center;
   padding: 3.75rem 3.125rem;
   min-height: 100vh;
+  height: 100%;
   width: 100vw;
   opacity: 0.95;
   text-transform: capitalize;

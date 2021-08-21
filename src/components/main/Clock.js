@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useGlobalContext } from '../../context';
+import { useSettingsContext } from '../../context';
 
 export default function Clock() {
 
-    const { settingsState } = useGlobalContext();
+    const { settingsState } = useSettingsContext();
     const { timeFormat } = settingsState;
 
     const [time, setTime] = useState({});
