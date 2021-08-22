@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from 'react';
-import threeDots from '../../img/three-dots.svg';
+import edit from '../../img/edit.svg';
 import Tabs from '../../utilities';
 import { useTabsContext } from '../../contextTabs';
 
 export default function Bookmarks() {
 
     const [currentTab, setCurrentTab] = useState(null);
+
 
     const { tabsState } = useTabsContext();
 
@@ -26,15 +27,17 @@ export default function Bookmarks() {
                 <ul>
                     {
                         tabsState.map( tab =>
-                                <li key={tab.id} className={tab.id === currentTab.id ? "active" : null}>
-                                    <button onClick={() => setCurrentTab(tab)}>
-                                        {tab.name}
-                                    </button>
-                                </li>
+                            <li key={tab.id} className={tab.id === currentTab.id ? "active" : null}>
+                                <button onClick={() => setCurrentTab(tab)}>
+                                    {tab.name}
+                                </button>
+                                <button className="bookmarks__edit-button">
+                                <img src={edit} alt="edit bookmark" />
+                                </button>
+                            </li>
                         )
                     }
                 </ul>
-                <button className="bookmarks__navigation__edit-button"></button>
             </div>
 
             <div className="bookmarks__links">
@@ -47,11 +50,13 @@ export default function Bookmarks() {
                                     <div key={id} className="bookmark">
                                         <a href={url}>
                                             <img className="bookmark__favicon" src={img} alt={`${linkName} link`} />
-                                            <p>{linkName}</p>
-                                            <button className="bookmark__edit-button">
-                                                <img src={threeDots} alt="" />
-                                            </button>
                                         </a>
+                                        <a href={url}>
+                                            <p>{linkName}</p>
+                                        </a>
+                                        <button className="bookmark__edit-button">
+                                            <img src={edit} alt="edit bookmark" />
+                                        </button>
                                     </div>
                                 )
                         })}
