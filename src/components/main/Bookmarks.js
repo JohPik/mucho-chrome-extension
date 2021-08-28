@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import edit from '../../img/edit.svg';
+import plus from '../../img/plus.svg';
 import Tabs from '../../utilities';
 import { useTabsContext } from '../../contextTabs';
 
@@ -60,6 +61,15 @@ export default function Bookmarks() {
                                     </div>
                                 )
                         })}
+                        {currentTab.links.length < 10 &&
+                            <div className="bookmark add__new">
+                                <button>
+                                    <img src={plus} alt="add bookmark" />
+                                    <p>add new</p>
+                                </button>
+                            </div>
+
+                            }
                     </>
             }
             </div>

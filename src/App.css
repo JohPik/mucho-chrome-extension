@@ -236,28 +236,46 @@ blockquote p::after {
   bottom: 0;
   left: 0;
 }
+.bookmarks__navigation li:not(.active)::after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  background: var(--clr-white);
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, 250%) scale(0);
+  transition: all 0.5s ease;
+}
+
+.bookmarks__navigation li:not(.active):hover::after {
+  opacity: 1;
+  transform: translate(-50%, 0%) scale(1);
+}
 
 .bookmarks__links {
-  padding: 1.875rem;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 1.875rem 1.5rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(auto);
-  row-gap: 2.5rem;
-  /* column-gap: 0.5rem; */
+  row-gap: 1.5rem;
+  column-gap: 1.5rem;
 }
 
 .bookmarks__edit-button {
   position: absolute;
   top: 0;
-  right: 5%;
-  padding: 5px;
+  right: 0;
+  padding: 7px;
   opacity: 0;
   transition: all ease 0.3s;
 }
 
 .bookmarks__navigation li:hover .bookmarks__edit-button {
+  opacity: 0.5;
+}
+
+.bookmarks__navigation li:hover .bookmarks__edit-button:hover {
   opacity: 1;
 }
 
@@ -267,10 +285,13 @@ blockquote p::after {
   text-transform: capitalize;
   position: relative;
   transition: all ease 0.2s;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .bookmark:hover {
   transform: scale(1.1);
+  background-color: var(--clr-dark-600);
 }
 
 .bookmark a {
@@ -313,14 +334,45 @@ blockquote p::after {
 
 .bookmark__edit-button {
   position: absolute;
-  top: -5px;
-  right: 13%;
-  padding: 5px;
+  top: 0;
+  right: 0;
+  padding: 7px;
   display: none;
+  opacity: 0;
+  transition: all ease 0.3s;
 }
 
 .bookmark:hover .bookmark__edit-button {
   display: initial;
+  opacity: 0.5;
+}
+
+.bookmark:hover .bookmark__edit-button:hover {
+  opacity: 1;
+}
+
+.bookmark.add__new {
+  opacity: 0.5;
+  transition: all ease 0.3s;
+}
+
+.bookmark.add__new:hover {
+  opacity: 1;
+}
+
+.bookmark.add__new img {
+  margin-bottom: 0.75rem;
+  width: 40px;
+  height: 40px;
+}
+
+.bookmark.add__new button {
+  text-align: center;
+  font-size: 0.625rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  color: var(--clr-white);
 }
 
 /* times */
