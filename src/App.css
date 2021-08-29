@@ -289,7 +289,8 @@ blockquote p::after {
   border-radius: 10px;
 }
 
-.bookmark:hover {
+.bookmark:hover,
+.bookmark.active {
   transform: scale(1.1);
   background-color: var(--clr-dark-600);
 }
@@ -332,7 +333,7 @@ blockquote p::after {
   margin-bottom: 0.75rem;
 }
 
-.bookmark__edit-button {
+.bookmark__delete-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -342,12 +343,12 @@ blockquote p::after {
   transition: all ease 0.3s;
 }
 
-.bookmark:hover .bookmark__edit-button {
+.bookmark:hover .bookmark__delete-button {
   display: initial;
   opacity: 0.5;
 }
 
-.bookmark:hover .bookmark__edit-button:hover {
+.bookmark:hover .bookmark__delete-button:hover {
   opacity: 1;
 }
 
@@ -373,6 +374,47 @@ blockquote p::after {
   font-weight: bold;
   letter-spacing: 0.05em;
   color: var(--clr-white);
+}
+
+.bookmark__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px;
+  opacity: 1;
+  transition: all ease 0.3s;
+}
+
+/* Delete Bookmark*/
+.bookmark.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookmark.active,
+.bookmark.active button {
+  color: var(--clr-white);
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+}
+.bookmark.active p {
+  margin: 0;
+}
+
+.bookmark.active:hover p::after {
+  opacity: 0;
+}
+
+.bookmark.active button {
+  padding: 3px 5px;
+  border-radius: 20px;
+}
+
+.bookmark__delete4ever-button {
+  background-color: red;
+  margin-bottom: 10px;
 }
 
 /* times */

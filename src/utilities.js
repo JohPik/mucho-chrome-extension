@@ -6,7 +6,7 @@ const tabs = [
             {
                 id: 1,
                 linkName: "amazon",
-                url: "#",
+                url: "www.amazon.com",
                 img: "../img/favicons/amazon.png"
             },
             {

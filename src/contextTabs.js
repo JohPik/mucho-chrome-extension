@@ -9,8 +9,12 @@ const TabsProvider = ({ children }) => {
 
     const [tabsState, dispatch] = useReducer(tabsReducer, tabs);
 
+    const deleteBookmark = (tabIdx, shortcutIdx) => {
+        dispatch({ type: "DELETE_SHORTCUT", payload: {tabIdx, shortcutIdx} })
+    };
+
     return (
-        <TabsContext.Provider value={{ tabsState }}>
+        <TabsContext.Provider value={{ tabsState, deleteBookmark }}>
             {children}
         </TabsContext.Provider>
     )
