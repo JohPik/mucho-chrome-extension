@@ -3,13 +3,13 @@ import small_white_close from '../../img/small_white_close.svg';
 
 export default function Bookmark({ link, deleteBookmark, tabIdx, shortcutIdx }) {
 
-    const { id, linkName, img, url } = link;
+    const { linkName, img, url } = link;
 
     const [active, isActive] = useState(false);
 
     if (!active){
         return (
-            <div key={id} className="bookmark">
+            <div className="bookmark">
                 <a href={url}>
                     <img className="bookmark__favicon" src={img} alt={`${linkName} link`} />
                 </a>
@@ -24,7 +24,7 @@ export default function Bookmark({ link, deleteBookmark, tabIdx, shortcutIdx }) 
     }
 
     return (
-        <div key={id} className="bookmark active">
+        <div className="bookmark active">
             <p>Delete link?</p>
 
             <div className="button_wrapper">

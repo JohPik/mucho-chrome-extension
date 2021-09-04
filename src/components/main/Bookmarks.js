@@ -4,12 +4,11 @@ import plus from '../../img/plus.svg';
 import Bookmark from './Bookmark';
 import { useTabsContext } from '../../contextTabs';
 
-export default function Bookmarks() {
+export default function Bookmarks({ addModal, tabIdx, setTabIdx }) {
 
     const { tabsState, deleteBookmark } = useTabsContext();
 
     const [currentTab, setCurrentTab] = useState(null);
-    const [tabIdx, setTabIdx] = useState(0);
 
     const manageTabChange = (tab, idx) => {
         setCurrentTab(tab);
@@ -25,13 +24,13 @@ export default function Bookmarks() {
     }
 
     return (
-        <div className="bookmarks">
+        <div className="bookmarks"> 
 
             <div className="bookmarks__navigation">
                 <ul>
                     {
                         tabsState.map( (tab, idx) =>
-                            <li key={tab.id} className={tab.id === currentTab.id ? "active" : null}>
+                            <li key={idx} className={idx === tabIdx ? "active" : null}>
                                 <button onClick={() => manageTabChange(tab, idx)}>
                                     {tab.name}
                                 </button>
@@ -49,7 +48,7 @@ export default function Bookmarks() {
                     <>
                         {currentTab.links.map( (link, idx) => 
                             <Bookmark 
-                                key={link.id}
+                                key={idx}
                                 link={link} 
                                 shortcutIdx={idx}
                                 tabIdx={tabIdx}
@@ -58,7 +57,7 @@ export default function Bookmarks() {
 
                         {currentTab.links.length < 10 &&
                             <div className="bookmark add__new">
-                                <button>
+                                <button onClick={() => addModal(true)}>
                                     <img src={plus} alt="add bookmark" />
                                     <p>add new</p>
                                 </button>
