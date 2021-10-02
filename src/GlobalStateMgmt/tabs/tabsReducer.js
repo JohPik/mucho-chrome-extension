@@ -32,7 +32,6 @@ const tabsReducer = (state, action) => {
     //Delete a new shortcut
     if (action.type === "DELETE_SHORTCUT") {
         const { tabIdx, shortcutIdx } = action.payload
-        console.log("the Payload", action.payload);
         //make a copy of current tab and delete current shortcut
         const newState = [...state];
         newState[tabIdx].links.splice(shortcutIdx, 1);
