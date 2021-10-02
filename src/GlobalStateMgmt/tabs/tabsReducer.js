@@ -17,15 +17,16 @@ const tabsReducer = (state, action) => {
     }
     //Add a new shortcut
     if (action.type === "ADD_SHORTCUT") {
-        console.log("CALLL ME")
         const { tabIdx, name, URL } = action.payload
+        //make a copy of current tab and delete current shortcut
         const newState = [...state];
-        const newTab = {
+        //create new Shortcut
+        const newShortcut = {
             linkName: name,
             url: URL,
             img: "../img/favicons/youtube.png"};
 
-        newState[tabIdx].links.push(newTab);
+        newState[tabIdx].links.push(newShortcut);
 
         return newState;
     }

@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { useTabsContext } from '../../contextTabs';
 
-export default function MultiPurposeModal({ setIsModal,  useCase }) {
+export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx }) {
+
+    console.log("tabIdx !!!!!", tabIdx);
 
     const { addTab, addBookmark } = useTabsContext();
 
@@ -39,11 +41,6 @@ export default function MultiPurposeModal({ setIsModal,  useCase }) {
     }, [])
 
     //Form Management need to work on that
-
-    const [formFields, setFields] = useState([
-
-    ]);
-
     const [name, setName] = useState('');
     const [URL, setURL] = useState('');
 
@@ -76,7 +73,7 @@ export default function MultiPurposeModal({ setIsModal,  useCase }) {
 
         //manage validation
         const {type, validate} = currentCase;
-        type === "tab" ? validate({name}) : validate({name, URL});
+        type === "tab" ? validate({name}) : validate({tabIdx, name, URL});
 
         // close Modal
         closeModal()

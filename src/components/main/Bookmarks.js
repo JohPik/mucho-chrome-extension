@@ -19,7 +19,7 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
         setCurrentTab(tabsState[tabIdx]);
     }, [tabsState, tabIdx]);
 
-    if(!currentTab) return <h2>Loading</h2>
+    if (!currentTab) return <h2>Loading</h2>
 
     return (
         <div className="bookmarks"> 

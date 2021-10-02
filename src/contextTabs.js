@@ -15,8 +15,8 @@ const TabsProvider = ({ children }) => {
     };
 
     const addBookmark = bookmark => {
-        console.log("We got a new bookmark", bookmark);
-        // dispatch({ type: "ADD_SHORTCUT", payload: bookmark});
+        // console.log("We got a new bookmark", bookmark);
+        dispatch({ type: "ADD_SHORTCUT", payload: bookmark});
     };
 
     const deleteBookmark = (tabIdx, shortcutIdx) => {
