@@ -83,24 +83,23 @@ const tabs = [
             }
         ]
     },
-    {
-
-        name: "sports",
-        links: [
-            {
+    // {
+    //     name: "sports",
+    //     links: [
+    //         {
         
-                linkName: "footbal",
-                url: "#",
-                img: "../img/favicons/CHANGEME.png"
-            },
-            {
+    //             linkName: "footbal",
+    //             url: "#",
+    //             img: "../img/favicons/CHANGEME.png"
+    //         },
+    //         {
         
-                linkName: "tennis",
-                url: "#",
-                img: "../img/favicons/CHANGEME.png"
-            }
-        ]
-    },
+    //             linkName: "tennis",
+    //             url: "#",
+    //             img: "../img/favicons/CHANGEME.png"
+    //         }
+    //     ]
+    // },
     {
 
         name: "social",

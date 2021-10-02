@@ -4,7 +4,7 @@ import plus from '../../img/plus.svg';
 import Bookmark from './Bookmark';
 import { useTabsContext } from '../../contextTabs';
 
-export default function Bookmarks({ addModal, tabIdx, setTabIdx }) {
+export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
 
     const { tabsState, deleteBookmark } = useTabsContext();
 
@@ -57,7 +57,7 @@ export default function Bookmarks({ addModal, tabIdx, setTabIdx }) {
 
                         {currentTab.links.length < 10 &&
                             <div className="bookmark add__new">
-                                <button onClick={() => addModal(true)}>
+                                <button onClick={() => modal(true)}>
                                     <img src={plus} alt="add bookmark" />
                                     <p>add new</p>
                                 </button>
