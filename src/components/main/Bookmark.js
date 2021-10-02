@@ -7,6 +7,11 @@ export default function Bookmark({ link, deleteBookmark, tabIdx, shortcutIdx }) 
 
     const [active, isActive] = useState(false);
 
+    const manageDelete = (tabIdx, shortcutIdx) => {
+        isActive(false);
+        deleteBookmark(tabIdx, shortcutIdx);
+    }
+
     if (!active){
         return (
             <div className="bookmark">
@@ -28,7 +33,7 @@ export default function Bookmark({ link, deleteBookmark, tabIdx, shortcutIdx }) 
             <p>Delete link?</p>
 
             <div className="button_wrapper">
-                <button className="bookmark__delete4ever-button" onClick={() => deleteBookmark(tabIdx, shortcutIdx)}>
+                <button className="bookmark__delete4ever-button" onClick={() => manageDelete(tabIdx, shortcutIdx)}>
                     Delete
                 </button>
 
