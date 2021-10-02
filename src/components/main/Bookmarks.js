@@ -36,7 +36,7 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
                                 </button>
                             </li>
                     )}
-                    { tabsState.length < 6 && 
+                    { tabsState.length < 5 && 
                         <li>
                             <button onClick={() => modal("createTab")}>
                                 <img src={plus} alt="add bookmark" />

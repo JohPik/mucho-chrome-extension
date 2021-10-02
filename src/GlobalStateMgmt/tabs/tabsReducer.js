@@ -5,7 +5,13 @@ const tabsReducer = (state, action) => {
     }
     //Add a tab
     if (action.type === "ADD_TAB") {
-        return state;
+        const { name } = action.payload;
+        //make a copy of current tab and delete current shortcut
+        const newState = [...state];
+        //create new Tab
+        const newTab = {name: name, links: []}
+        newState.push(newTab);
+        return newState;
     }
     //Delete a tab
     if (action.type === "DELETE_TAB") {
@@ -17,7 +23,7 @@ const tabsReducer = (state, action) => {
     }
     //Add a new shortcut
     if (action.type === "ADD_SHORTCUT") {
-        const { tabIdx, name, URL } = action.payload
+        const { tabIdx, name, URL } = action.payload;
         //make a copy of current tab and delete current shortcut
         const newState = [...state];
         //create new Shortcut
@@ -32,7 +38,7 @@ const tabsReducer = (state, action) => {
     }
     //Delete a new shortcut
     if (action.type === "DELETE_SHORTCUT") {
-        const { tabIdx, shortcutIdx } = action.payload
+        const { tabIdx, shortcutIdx } = action.payload;
         //make a copy of current tab and delete current shortcut
         const newState = [...state];
         newState[tabIdx].links.splice(shortcutIdx, 1);
