@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useTabsContext } from '../../contextTabs';
+import faviconColor from '../../faviconColor';
 
 export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx }) {
 
@@ -111,6 +112,10 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx }) {
     * @return {Promise} - The url of freshly generated Favicon
     */
     const makeStandardFavicon = () => {
+        
+        //get a ramdom color
+        const colorName = getColor();
+
         return new Promise(res => {
             // create a canvas
             const canvas = document.createElement('canvas');
@@ -123,15 +128,30 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx }) {
             ctx.font = "15px Arial";
             ctx.textBaseline = 'middle';
             ctx.textAlign = "center";
+            ctx.fillStyle = faviconColor[colorName].text;
             ctx.fillText("Hello",canvas.width/2, canvas.height/2);
             ctx.globalCompositeOperation = 'destination-over';
-            ctx.fillStyle = "#FF0000";
+            ctx.fillStyle = faviconColor[colorName].bkgrd;
             ctx.fillRect(0, 0, 48, 48);
     
             // get it back as a Blob
             canvas.toBlob(res);
         });
     }
+
+    //return a random Color 
+    const getColor = () => {
+        const faviconColorArray  = Object.keys(faviconColor);
+        const randomNumber = Math.random();
+        const faviconColorIndex  = Math.floor(randomNumber * faviconColorArray.length);
+        return faviconColorArray[faviconColorIndex];
+    }
+    
+    const randomProperty = obj => {
+    let keys = Object.keys(obj);
+    return obj[keys[ keys.length * Math.random() << 0]];
+    };
+
 
     /**
     * Generate a favicon to be used by new book marks
