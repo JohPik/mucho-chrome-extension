@@ -122,14 +122,17 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx }) {
             canvas.width = 48;
             canvas.height = 48;
             
-            // Write Hello on Canvas
+            
             let ctx = canvas.getContext("2d");
-
-            ctx.font = "15px Arial";
+            // Write Name on Canvas
+            const text = name.length >= 3 ? name.slice(0, 3) : name;
+            ctx.font = '300 15px Arial';
             ctx.textBaseline = 'middle';
             ctx.textAlign = "center";
             ctx.fillStyle = faviconColor[colorName].text;
-            ctx.fillText("Hello",canvas.width/2, canvas.height/2);
+            ctx.fillText(text.toUpperCase() ,canvas.width/2, canvas.height/2);
+
+            // Apply background to Canvas
             ctx.globalCompositeOperation = 'destination-over';
             ctx.fillStyle = faviconColor[colorName].bkgrd;
             ctx.fillRect(0, 0, 48, 48);
