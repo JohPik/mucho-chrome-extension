@@ -19,7 +19,12 @@ const tabsReducer = (state, action) => {
     }
     //Rename a tab
     if (action.type === "RENAME_TAB") {
-        return state;
+        const { clickedEditTab, name } = action.payload;
+        //make a copy of current tab and delete current shortcut
+        const newState = [...state];
+        newState[clickedEditTab].name = name;
+        
+        return newState;
     }
     //Add a new shortcut
     if (action.type === "ADD_SHORTCUT") {

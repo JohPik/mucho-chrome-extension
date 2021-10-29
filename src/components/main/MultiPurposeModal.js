@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { useTabsContext } from '../../contextTabs';
 import getFavicon from './getFavicon';
 
-export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx }) {
+export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clickedEditTab }) {
 
 
-    const { addTab, addBookmark } = useTabsContext();
+    const { addTab, renameTab, addBookmark } = useTabsContext();
 
     // Manage different Case Scenarios
     const useCases = {
@@ -18,7 +18,8 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx }) {
         editTab: {
             type: "tab",
             message: "edit tab",
-            fieldEmpty: false
+            fieldEmpty: false,
+            validate: renameTab
         },
         createShortcut: {
             type: "shortCut",
@@ -60,7 +61,7 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx }) {
         const {type, validate} = currentCase;
         // when it is a tab we only care about the name
         if(type === "tab") {
-            validate({name})
+            validate({clickedEditTab, name})
         } else { // when it is a shortcut we need the tableIdx, name, URL and Favicon
             // Get a Favicon
             const favicon = await getFavicon(URL, name);

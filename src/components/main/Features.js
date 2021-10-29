@@ -9,13 +9,23 @@ export default function Features() {
     const { settingsState } = useSettingsContext();
     const { isDarkModeOff } = settingsState;
 
-
+    // Manages if modal is visible
     const [isModal, setIsModal] = useState(false);
+    // Manages the different Use Case of Modal, ex: Add new Bookmark
     const [useCase, setUseCase] = useState(null);
+    // Manages the Currently displayed Tab
     const [tabIdx, setTabIdx] = useState(0);
+    // Manages the Clicked Tab - only required in Edit Tab
+    const [clickedEditTab, setClickEditTab] = useState(null);
 
-    const handleModal = currentCase => {
-        // const useCases = ["createTab", "editTab", "createShortcut", "editShortcut"]
+    /**
+     * Modal Management
+     * Programatically generates the different modals
+     * to use the Rename Tab modal
+     * an extra parameter indexOfCurrentClikedTab is required
+     */
+    const handleModal = (currentCase, indexOfCurrentClikedTab) => {
+        setClickEditTab(indexOfCurrentClikedTab);
         setUseCase(currentCase);
         setIsModal(true);
     };
@@ -23,8 +33,8 @@ export default function Features() {
     
     return (
         <section className={isDarkModeOff ? "features light-mode" : "features"}>
-        {/**** Add New Modal ****/}
-            { isModal && <MultiPurposeModal setIsModal={setIsModal} useCase={useCase} tabIdx={tabIdx}/>}
+        {/**** Add New / Edit Modal for Bookmarks and Tabs****/}
+            { isModal && <MultiPurposeModal setIsModal={setIsModal} useCase={useCase} tabIdx={tabIdx} clickedEditTab={clickedEditTab}/>}
         {/**** Search Bar ****/}
             <Search />
         {/**** Bookmarks ****/}
