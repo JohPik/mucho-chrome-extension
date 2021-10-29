@@ -26,7 +26,6 @@ const getGoolgeIcon = async URL => {
 * @return {Promise} - The url of freshly generated Favicon
 */
 const makeGoogleFavicon = img => {
-    console.log("I am a Google FAVICON");
     return new Promise(res => {
         // create a canvas
         const canvas = document.createElement('canvas');
@@ -108,7 +107,6 @@ return obj[keys[ keys.length * Math.random() << 0]];
 * shared on https://stackoverflow.com/questions/52959839/convert-imagebitmap-to-blob
 * Thank you 🙏 
 * 
-* @constructor
 * @param {string} URL - The url source of the google favicon.
 * @return {String} faviconURL - The url of freshly generated Favicon
 */
@@ -116,7 +114,18 @@ const getFavicon = async (URL, name) => {
     //url of favicon that is return at the end of funciton
     let faviconURL;
 
-    await getGoolgeIcon(`chrome://favicon/size/48@1x/${URL}`)
+    //temporary URL of where to fecth Goolgle Favicon
+    let googleFaviconURL;
+
+    if(URL.includes("http")){
+        googleFaviconURL = `chrome://favicon/size/48@1x/${URL}`;
+    } else if (URL.includes("www")){
+        googleFaviconURL = `chrome://favicon/size/48@1x/http://${URL}`;
+    } else {
+        googleFaviconURL = `chrome://favicon/size/48@1x/http://www.${URL}`;
+    }
+
+    await getGoolgeIcon(googleFaviconURL)
         .then( async img => {
             // case 1 - if the Height and Width are equal to 48 we have a google favicon.
             // case 2 - we got a dummy favicon, so we need to make our own.
