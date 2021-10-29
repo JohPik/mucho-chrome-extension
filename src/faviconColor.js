@@ -76,10 +76,6 @@ const faviconColor = {
             bkgrd: "#399ff3",
             text: "#ffffff"
         },
-        "Carolina Blue": {
-            bkgrd: "#399ff3",
-            text: "#ffffff"
-        },
         "Blue Jeans": {
             bkgrd: "#5bb0f5",
             text: "#ffffff"
