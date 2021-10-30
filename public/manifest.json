@@ -13,7 +13,8 @@
     "activeTab",
     "search",
     "chrome://favicon/*",
-    "http://www.google.com/*"
+    "http://www.google.com/*",
+    "https://images.unsplash.com/*"
   ],
-  "content_security_policy": "script-src 'self'; object-src 'self'; img-src chrome://favicon/ http://www.google.com/;"
+  "content_security_policy": "script-src 'self'; object-src 'self'; img-src chrome://favicon/ http://www.google.com/ https://images.unsplash.com/;"
 }
