@@ -16,7 +16,7 @@ export default function Features() {
     // Manages the Currently displayed Tab
     const [tabIdx, setTabIdx] = useState(0);
     // Manages the Clicked Tab - only required in Edit Tab
-    const [clickedEditTab, setClickEditTab] = useState(null);
+    const [clikedTab, setClikedTab] = useState(null);
 
     /**
      * Modal Management
@@ -25,7 +25,7 @@ export default function Features() {
      * an extra parameter indexOfCurrentClikedTab is required
      */
     const handleModal = (currentCase, indexOfCurrentClikedTab) => {
-        setClickEditTab(indexOfCurrentClikedTab);
+        setClikedTab(indexOfCurrentClikedTab);
         setUseCase(currentCase);
         setIsModal(true);
     };
@@ -34,7 +34,7 @@ export default function Features() {
     return (
         <section className={isDarkModeOff ? "features light-mode" : "features"}>
         {/**** Add New / Edit Modal for Bookmarks and Tabs****/}
-            { isModal && <MultiPurposeModal setIsModal={setIsModal} useCase={useCase} tabIdx={tabIdx} clickedEditTab={clickedEditTab}/>}
+            { isModal && <MultiPurposeModal setIsModal={setIsModal} useCase={useCase} tabIdx={tabIdx} clikedTab={clikedTab}/>}
         {/**** Search Bar ****/}
             <Search />
         {/**** Bookmarks ****/}

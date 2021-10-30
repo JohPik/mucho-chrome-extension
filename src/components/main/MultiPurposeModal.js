@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { useTabsContext } from '../../contextTabs';
 import getFavicon from './getFavicon';
 
-export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clickedEditTab }) {
+export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clikedTab }) {
 
 
-    const { addTab, renameTab, addBookmark } = useTabsContext();
+    const { addTab, renameTab, deleteTab, addBookmark } = useTabsContext();
 
     // Manage different Case Scenarios
     const useCases = {
@@ -38,7 +38,7 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clicke
     
     useEffect(() => {
         setCurrentCase(useCases[useCase]);
-    }, [])
+    }, [useCase])
 
     //Form Management need to work on that
     const [name, setName] = useState('');
@@ -61,7 +61,7 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clicke
         const {type, validate} = currentCase;
         // when it is a tab we only care about the name
         if(type === "tab") {
-            validate({clickedEditTab, name})
+            validate({clikedTab, name})
         } else { // when it is a shortcut we need the tableIdx, name, URL and Favicon
             // Get a Favicon
             const favicon = await getFavicon(URL, name);
@@ -72,11 +72,21 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clicke
         // addBookmark(newLink);
     };
 
+    /**
+     * Handle Deletion of Current Tab
+     */
+    const handleTabDelete = () => {
+        // close Modal
+        closeModal();
+        //deleteCurrentTab
+        deleteTab(clikedTab);
+    }
+
     if(!currentCase) return <h2>LOADING...</h2>
     
     return (
-            <div className="add__tab">
-                <div className="add__tab__wrapper">
+            <div className="modal">
+                <div className="modal__wrapper">
                     <h2>{currentCase.message}</h2>
                     
                     <form onSubmit={handleSubmit}>
@@ -110,9 +120,10 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clicke
                             </button>
                             <button onClick={closeModal}>Cancel</button>
                         </div>
-
                     </form>
-            
+                    { useCase === "editTab" && 
+                        <button onClick={handleTabDelete} className="delete_tab_button">Delete Tab</button>
+                    }
                 </div>
             </div>
     )

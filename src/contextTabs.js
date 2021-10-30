@@ -13,6 +13,14 @@ const TabsProvider = ({ children }) => {
         dispatch({ type: "ADD_TAB", payload: tab});
     };
 
+    const renameTab = tab => {
+        dispatch({ type: "RENAME_TAB", payload: tab})
+    }
+
+    const deleteTab = tab => {
+        dispatch({ type: "DELETE_TAB", payload: tab})
+    }
+
     const addBookmark = bookmark => {
         dispatch({ type: "ADD_SHORTCUT", payload: bookmark});
     };
@@ -22,7 +30,7 @@ const TabsProvider = ({ children }) => {
     };
 
     return (
-        <TabsContext.Provider value={{ tabsState, addTab, deleteBookmark, addBookmark }}>
+        <TabsContext.Provider value={{ tabsState, addTab, renameTab, deleteTab, deleteBookmark, addBookmark }}>
             {children}
         </TabsContext.Provider>
     )

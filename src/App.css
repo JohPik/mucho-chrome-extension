@@ -418,11 +418,12 @@ blockquote p::after {
 }
 
 /* Add Bookmark Modal*/
-.add__tab {
+.modal {
   top: 0;
   position: absolute;
   left: 0;
-  background: var(--clr-dark-900);
+  background-color: var(--clr-settings-dark);
+  opacity: .95;
   z-index: 100;
   display: flex;
   justify-content: center;
@@ -437,7 +438,7 @@ blockquote p::after {
   text-transform: capitalize;
 }
 
-.add__tab h2 {
+.modal h2 {
   font-weight: 300;
   font-size: 2em;
   text-transform: uppercase;
@@ -445,24 +446,24 @@ blockquote p::after {
   margin-bottom: 3.75rem;
 }
 
-.add__tab form {
+.modal form {
   /* max-width: 250px; */
   width: 100%;
   text-align: left;
 }
 
-.add__tab label {
+.modal label {
   font-size: 1rem;
   letter-spacing: 0.05em;
   display: block;
   margin-bottom: 1em;
 }
 
-.add__tab label:nth-of-type(2n) {
+.modal label:nth-of-type(2n) {
   margin-top: 2em;
 }
 
-.add__tab input {
+.modal input {
   font-size: 0.8125rem;
   letter-spacing: 0.05em;
   display: block;
@@ -477,7 +478,7 @@ blockquote p::after {
   position: relative;
 }
 
-.add__tab input:focus {
+.modal input:focus {
   outline-style: none;
   box-shadow: none;
   border-color: transparent;
@@ -485,11 +486,11 @@ blockquote p::after {
   box-shadow: 0px 0px 0px 2px #ffffff;
 }
 
-.add__tab .button__wrapper {
+.modal .button__wrapper {
   text-align: right;
 }
 
-.add__tab .button__wrapper button {
+.modal .button__wrapper button {
   margin-top: 2em;
   color: var(--clr-white);
   font-weight: bold;
@@ -501,19 +502,28 @@ blockquote p::after {
   min-width: 100px;
 }
 
-.add__tab .button__wrapper button:disabled {
+.modal .button__wrapper button:disabled {
   opacity: 0.5;
 }
-.add__tab .button__wrapper button:disabled:hover {
+.modal .button__wrapper button:disabled:hover {
   cursor: initial;
 }
 
-.add__tab .button__wrapper .submit__button {
+.modal .button__wrapper .submit__button {
   background-color: var(--clr-white-400);
 }
 
-.add__tab .button__wrapper button:nth-of-type(2n) {
+.modal .button__wrapper button:nth-of-type(2n) {
   margin-left: 2em;
+}
+
+.modal .delete_tab_button {
+  color: red ;
+  marginTop: 2em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 3.75rem 3.125rem;
 }
 
 /* times */

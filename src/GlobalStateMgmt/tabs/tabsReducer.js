@@ -3,6 +3,7 @@ const tabsReducer = (state, action) => {
     if (action.type === "GET_EXISTING_CHROME_TABS") {
         return { ...action.payload };
     }
+
     //Add a tab
     if (action.type === "ADD_TAB") {
         const { name } = action.payload;
@@ -13,10 +14,17 @@ const tabsReducer = (state, action) => {
         newState.push(newTab);
         return newState;
     }
+
     //Delete a tab
     if (action.type === "DELETE_TAB") {
-        return state;
+        const tabIdx = action.payload;
+        // console.log(action.payload)
+        //make a copy of current tab and delete current Tabs
+        const newState = [...state];
+        newState.splice(tabIdx, 1);
+        return newState;
     }
+
     //Rename a tab
     if (action.type === "RENAME_TAB") {
         const { clickedEditTab, name } = action.payload;
@@ -26,6 +34,7 @@ const tabsReducer = (state, action) => {
         
         return newState;
     }
+
     //Add a new shortcut
     if (action.type === "ADD_SHORTCUT") {
         const { tabIdx, name, URL, favicon } = action.payload;
@@ -45,6 +54,7 @@ const tabsReducer = (state, action) => {
 
         return newState;
     }
+    
     //Delete a new shortcut
     if (action.type === "DELETE_SHORTCUT") {
         const { tabIdx, shortcutIdx } = action.payload;
@@ -54,6 +64,7 @@ const tabsReducer = (state, action) => {
 
         return newState;
     }
+
     //Edit a shortcut including name - link
     if (action.type === "EDIT_SHORTCUT") {
         return state;
