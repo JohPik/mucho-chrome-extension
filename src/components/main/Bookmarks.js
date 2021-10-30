@@ -19,56 +19,59 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
         setCurrentTab(tabsState[tabIdx]);
     }, [tabsState, tabIdx]);
 
-    if (!currentTab) return <h2>Loading</h2>
+    console.log("TAB STATE", tabsState);
 
     return (
         <div className="bookmarks"> 
-
-            <div className="bookmarks__navigation">
-                <ul>
-                    { tabsState.map( (tab, idx) =>
-                            <li key={idx} className={idx === tabIdx ? "active" : null}>
-                                <button onClick={() => manageTabChange(tab, idx)}>
-                                    {tab.name.length > 13 ? tab.name.slice(0,10) + "..." : tab.name}
-                                </button>
-                                <button className="bookmarks__edit-button" onClick={() => modal("editTab", idx)}>
-                                <img src={edit} alt="edit bookmark" />
+            { tabsState.length === 0 ? 
+                <div className="bookmarks__navigation__no_tab">
+                    <button onClick={() => modal("createTab")}>Add a new bookmark tab</button>
+                </div>
+                : 
+                <div className="bookmarks__navigation">
+                    <ul>
+                        { tabsState.map( (tab, idx) =>
+                                <li key={idx} className={idx === tabIdx ? "active" : null}>
+                                    <button onClick={() => manageTabChange(tab, idx)}>
+                                        {tab.name.length > 13 ? tab.name.slice(0,10) + "..." : tab.name}
+                                    </button>
+                                    <button className="bookmarks__edit-button" onClick={() => modal("editTab", idx)}>
+                                    <img src={edit} alt="edit bookmark" />
+                                    </button>
+                                </li>
+                        )}
+                        { tabsState.length < 5 && 
+                            <li>
+                                <button onClick={() => modal("createTab")}>
+                                    <img src={plus} alt="add bookmark" />
                                 </button>
                             </li>
-                    )}
-                    { tabsState.length < 5 && 
-                        <li>
-                            <button onClick={() => modal("createTab")}>
-                                <img src={plus} alt="add bookmark" />
-                            </button>
-                        </li>
-                    }
-                </ul>
-            </div>
-
-            <div className="bookmarks__links">
-                { currentTab && 
-                    <>
-                        {currentTab.links.map( (link, idx) => 
-                            <Bookmark 
-                                key={idx}
-                                link={link} 
-                                shortcutIdx={idx}
-                                tabIdx={tabIdx}
-                                deleteBookmark={deleteBookmark}/> 
-                        )}
-
-                        {currentTab.links.length < 10 &&
-                            <div className="bookmark add__new">
-                                <button onClick={() => modal("createShortcut")}>
-                                    <img src={plus} alt="add bookmark" />
-                                    <p>add new</p>
-                                </button>
-                            </div>
                         }
-                    </>
-                }
-            </div>
+                    </ul>
+                </div>
+            }
+            { currentTab &&
+                <div className="bookmarks__links">
+                    {currentTab.links.map( (link, idx) => 
+                        <Bookmark 
+                            key={idx}
+                            link={link} 
+                            shortcutIdx={idx}
+                            tabIdx={tabIdx}
+                            deleteBookmark={deleteBookmark}/> 
+                    )}
+
+                    {currentTab.links.length < 10 &&
+                        <div className="bookmark add__new">
+                            <button onClick={() => modal("createShortcut")}>
+                                <img src={plus} alt="add bookmark" />
+                                <p>add new</p>
+                            </button>
+                        </div>
+                    }
+                </div>
+            }
+            
         </div>
     )
 }
