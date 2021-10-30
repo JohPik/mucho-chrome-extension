@@ -29,7 +29,7 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
                     { tabsState.map( (tab, idx) =>
                             <li key={idx} className={idx === tabIdx ? "active" : null}>
                                 <button onClick={() => manageTabChange(tab, idx)}>
-                                    {tab.name}
+                                    {tab.name.length > 13 ? tab.name.slice(0,10) + "..." : tab.name}
                                 </button>
                                 <button className="bookmarks__edit-button" onClick={() => modal("editTab", idx)}>
                                 <img src={edit} alt="edit bookmark" />

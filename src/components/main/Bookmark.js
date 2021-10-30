@@ -19,7 +19,7 @@ export default function Bookmark({ link, deleteBookmark, tabIdx, shortcutIdx }) 
                     <img className="bookmark__favicon" src={img} alt={`${linkName} link`} />
                 </a>
                 <a href={url}>
-                    <p>{linkName}</p>
+                    <p>{linkName.length > 10 ? linkName.slice(0,7) + "..." : linkName}</p>
                 </a>
                 <button className="bookmark__delete-button" onClick={() => isActive(true)}>
                     <img src={small_white_close} alt="delete bookmark" />
