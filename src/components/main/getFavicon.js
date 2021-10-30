@@ -96,12 +96,6 @@ const getColor = () => {
     return faviconColorArray[faviconColorIndex];
 }
 
-const randomProperty = obj => {
-let keys = Object.keys(obj);
-return obj[keys[ keys.length * Math.random() << 0]];
-};
-
-
 /**
 * Generate a favicon to be used by new book marks
 * shared on https://stackoverflow.com/questions/52959839/convert-imagebitmap-to-blob
