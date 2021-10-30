@@ -1,6 +1,14 @@
 :root {
-  --clr-dark-900: rgba(12, 12, 12, 0.9);
+  /* --clr-dark-900: rgba(12, 12, 12, 0.9);
   --clr-dark-600: rgba(20, 20, 20, 0.6);
+  --clr-white: #fff;
+  --clr-white-900: rgba(255, 255, 255, 0.95);
+  --clr-white-800: rgba(255, 255, 255, 0.8);
+  --clr-white-400: rgba(255, 255, 255, 0.5);
+  --clr-white-200: rgba(255, 255, 255, 0.2); */
+
+  --clr-dark-900: rgba(2, 0, 15, 0.9);
+  --clr-dark-600: rgba(2, 0, 15, 0.6);
   --clr-white: #fff;
   --clr-white-900: rgba(255, 255, 255, 0.95);
   --clr-white-800: rgba(255, 255, 255, 0.8);
