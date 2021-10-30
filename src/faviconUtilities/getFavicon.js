@@ -1,4 +1,4 @@
-import faviconColor from '../../faviconColor';
+import faviconColor from './faviconColor';
 
 /**
 * Create a bitmap[img] of a google favicon. 

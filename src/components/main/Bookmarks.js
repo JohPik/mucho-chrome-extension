@@ -19,8 +19,6 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
         setCurrentTab(tabsState[tabIdx]);
     }, [tabsState, tabIdx]);
 
-    console.log("TAB STATE", tabsState);
-
     return (
         <div className="bookmarks"> 
             { tabsState.length === 0 ? 

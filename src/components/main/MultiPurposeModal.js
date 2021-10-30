@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useTabsContext } from '../../contextTabs';
-import getFavicon from './getFavicon';
+import getFavicon from '../../faviconUtilities/getFavicon';
 
 export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clikedTab }) {
 
