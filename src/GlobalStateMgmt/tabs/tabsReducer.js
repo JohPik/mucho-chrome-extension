@@ -1,7 +1,13 @@
+// import tabs from './utilities'; 
+import tabs from "../../utilities";
+
 const tabsReducer = (state, action) => {
     //Get saved tabs from Chrome
     if (action.type === "GET_EXISTING_CHROME_TABS") {
-        return { ...action.payload };
+        // console.log("FROM TABS REDUCER", action.payload );
+        
+        // console.log("ORIGNAL UTLTITIES TABS", tabs);
+        return [...action.payload];
     }
 
     //Add a tab
@@ -45,9 +51,6 @@ const tabsReducer = (state, action) => {
             linkName: name,
             url: URL,
             img: favicon
-            // img: 'https://www.google.com/s2/favicons?sz=64&domain_url=amazon.com'
-            // img: 'chrome://favicon/size/24@1x/https://www.apple.com'
-            // img: 'chrome://favicon2/?size=24&scale_factor=1x&show_fallback_monogram=&page_url=https%3A%2F%2Fwww.amazon.com'
         };
 
         newState[tabIdx].links.push(newShortcut);

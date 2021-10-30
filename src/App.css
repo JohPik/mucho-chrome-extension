@@ -550,7 +550,7 @@ blockquote p::after {
 }
 
 .modal .delete_tab_button {
-  color: red ;
+  color: red;
   position: absolute;
   bottom: 0;
   right: 0;

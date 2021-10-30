@@ -47,7 +47,6 @@ const SettingsProvider = ({ children }) => {
     };
     
     /*** Chrome User Setting Management ***/
-/*
     //Looks for saved Settings on Chrome first time App is Rendered
     useEffect(() => {
         chrome.storage.sync.get(['MUCHO_CHROME_SETTINGS'], result => {
@@ -66,7 +65,7 @@ const SettingsProvider = ({ children }) => {
     useEffect(() => {
         chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...settingsState } });
     }, [settingsState])
-*/
+
     return (
         <SettingsContext.Provider value={{
             isSettingsOpen, 
