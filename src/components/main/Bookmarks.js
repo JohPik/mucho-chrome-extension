@@ -17,6 +17,7 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
 
     useEffect( () => {
         setCurrentTab(tabsState[tabIdx]);
+        // console.log("THIS IS Current State from Use Effect", currentTab);
     }, [tabsState, tabIdx]);
 
     return (
@@ -50,14 +51,31 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
             }
             { currentTab &&
                 <div className="bookmarks__links">
-                    {currentTab.links.map( (link, idx) => 
-                        <Bookmark 
+                    {currentTab.links.map( (link, idx) => {
+                        // console.log("FAVICON 1: ", link.img);
+                        // console.log("FAVICON 2: ", currentTab.links[idx].img.faviconURL);
+                        // console.log("FAVICON 3: ", currentTab.links[idx]);
+                        // console.log("FAVICON 4: ", currentTab.links[idx].img);
+                        // console.log("FAVICON 5: ", currentTab.links[idx].img["faviconURL"]);
+                        // const newObject = {...currentTab.links[idx].img};
+                        // console.log("FAVICON 6: ", newObject);
+                        // console.log("FAVICON 7: ", newObject.faviconURL);
+                        // // const newerNewObject = [...tabsState][0].links[idx].img;
+                        // // const newString = newerNewObject.faviconURL + "HELLO FUCKER"
+                        // // console.log("FAVICON 8: ", newerNewObject);
+                        // // console.log("FAVICON 9: ", newString);
+                        // let cloneObj = JSON.parse(JSON.stringify(currentTab.links[idx].img));
+                        // console.log("FAVICON 8: ", cloneObj);
+                        return <Bookmark 
                             key={idx}
-                            link={link} 
+                            
+                            linkName = {link.linkName}
+                            url = {link.url}
+                            favicon = {link.img.faviconURL} 
                             shortcutIdx={idx}
                             tabIdx={tabIdx}
                             deleteBookmark={deleteBookmark}/> 
-                    )}
+                    })}
 
                     {currentTab.links.length < 10 &&
                         <div className="bookmark add__new">

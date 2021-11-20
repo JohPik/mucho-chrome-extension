@@ -46,25 +46,25 @@ const SettingsProvider = ({ children }) => {
         dispatch({ type: "RESET_TO_DEFAULT"})
     };
     
-    /*** Chrome User Setting Management ***/
-    //Looks for saved Settings on Chrome first time App is Rendered
-    useEffect(() => {
-        chrome.storage.sync.get(['MUCHO_CHROME_SETTINGS'], result => {
-            const userSettings = result.MUCHO_CHROME_SETTINGS;
-            // if saved Settings => saved them to state
-            // else => Saved defaultState as Settings in Chrome
-            userSettings ? (
-                dispatch({ type: 'GET_EXISTING_CHROME_SETTINGS', payload: userSettings })
-            ) : (
-                chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...defaultState } })
-            );
-        });
-    }, [])
+    // /*** Chrome User Setting Management ***/
+    // //Looks for saved Settings on Chrome first time App is Rendered
+    // useEffect(() => {
+    //     chrome.storage.sync.get(['MUCHO_CHROME_SETTINGS'], result => {
+    //         const userSettings = result.MUCHO_CHROME_SETTINGS;
+    //         // if saved Settings => saved them to state
+    //         // else => Saved defaultState as Settings in Chrome
+    //         userSettings ? (
+    //             dispatch({ type: 'GET_EXISTING_CHROME_SETTINGS', payload: userSettings })
+    //         ) : (
+    //             chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...defaultState } })
+    //         );
+    //     });
+    // }, [])
 
-    //Saves updated settings to Chrome
-    useEffect(() => {
-        chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...settingsState } });
-    }, [settingsState])
+    // //Saves updated settings to Chrome
+    // useEffect(() => {
+    //     chrome.storage.sync.set({ MUCHO_CHROME_SETTINGS: { ...settingsState } });
+    // }, [settingsState])
 
     return (
         <SettingsContext.Provider value={{
