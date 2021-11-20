@@ -5,7 +5,6 @@
  */
 
 const base64ToBlob = async base64 => {
-    console.log("Blob is called")
     const base64Response =  await fetch(base64);
     const blob = await base64Response.blob();
     let newImg = document.createElement('img')
