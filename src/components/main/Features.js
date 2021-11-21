@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Search from './Search'
 import Bookmarks from './Bookmarks'
 import MultiPurposeModal from './MultiPurposeModal';
 import { useSettingsContext } from '../../contextSettings';
+
+import { useTabsContext } from '../../contextTabs';
 
 export default function Features() {
     
@@ -13,10 +15,15 @@ export default function Features() {
     const [isModal, setIsModal] = useState(false);
     // Manages the different Use Case of Modal, ex: Add new Bookmark
     const [useCase, setUseCase] = useState(null);
-    // Manages the Currently displayed Tab
+    // Stores the Index of current displayed Tab
     const [tabIdx, setTabIdx] = useState(0);
-    // Manages the Clicked Tab - only required in Edit Tab
+    // Stores the Index of cliked Tab - only required in Edit Tab
     const [clikedTab, setClikedTab] = useState(null);
+
+    // Retrieve all Tabs and deleteBookmark helper function form Context
+    const { tabsState, deleteBookmark } = useTabsContext();
+    // Stores the Data of current displayed Tab
+    const [currentTab, setCurrentTab] = useState(null);
 
     /**
      * Modal Management
@@ -29,6 +36,49 @@ export default function Features() {
         setUseCase(currentCase);
         setIsModal(true);
     };
+
+    /*
+     * Handles Which Tab is Currently rendered in 3 specific use Cases
+     * 1 - Make a copy of Tabs State in a Use Ref on first Render
+     * 2 - When Tabs State is updated, update current Tab in View if:
+     *      I -  Deleting a Tab 
+     *      II -  New Tab is Created
+     *      III -  Edit an Exisitng Tag which is Current Tab in View 
+     */
+    const stateRef = useRef();
+    
+    useEffect( () => {
+        stateRef.current = tabsState;
+    }, [])
+
+    useEffect( () => {
+        // helper variable storing the index of the new Tab to be rendered
+        // by default always equal to the currently rendered tab
+        let tabIndex = clikedTab;
+        
+        // I - Deleting a Tab 
+        if (stateRef.current.length > tabsState.length ) { 
+            // 1 - Tab to delete is Currently Tab rendered
+            if (clikedTab === tabIdx) { tabIndex = tabIdx - 1 } 
+            // 2 - Tab to delete is not Currently rendered and is the first or last element of Tabs State
+            else if (clikedTab === 0 || tabIdx === 0 || clikedTab === tabsState.length - 1 || tabIdx === tabsState.length) {  tabIndex = tabIdx - 1 } 
+            // 3 - Tab to delete is not Currently rendered
+            else { tabIndex = tabIdx }
+        }
+        // II - New Tab created
+        else if (!clikedTab) { 
+            tabIndex = tabsState.length - 1; 
+        } 
+        // III - Edit an Exisitng Tag which is Current Tab in View
+        else if (clikedTab !== tabIdx) { 
+            tabIndex = clikedTab; 
+        }
+        // Update Tab to be rendered
+        setCurrentTab(tabsState[tabIndex]);
+        setTabIdx(tabIndex); 
+        // Update useREf
+        stateRef.current = tabsState;
+    }, [tabsState])
     
     
     return (
@@ -38,7 +88,7 @@ export default function Features() {
         {/**** Search Bar ****/}
             <Search />
         {/**** Bookmarks ****/}
-            <Bookmarks modal={handleModal} tabIdx={tabIdx} setTabIdx={setTabIdx}/>
+            <Bookmarks modal={handleModal} tabIdx={tabIdx} setTabIdx={setTabIdx} tabsState={tabsState} deleteBookmark={deleteBookmark} currentTab={currentTab} setCurrentTab={setCurrentTab}/>
         </section>
     )
 }

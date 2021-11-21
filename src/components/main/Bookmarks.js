@@ -2,13 +2,8 @@ import React, { useState, useEffect} from 'react';
 import edit from '../../img/edit.svg';
 import plus from '../../img/plus.svg';
 import Bookmark from './Bookmark';
-import { useTabsContext } from '../../contextTabs';
 
-export default function Bookmarks({ modal, tabIdx, setTabIdx }) {
-
-    const { tabsState, deleteBookmark } = useTabsContext();
-
-    const [currentTab, setCurrentTab] = useState(null);
+export default function Bookmarks({ modal, tabIdx, setTabIdx, tabsState, deleteBookmark, currentTab, setCurrentTab }) {
 
     const manageTabChange = (tab, idx) => {
         setCurrentTab(tab);
