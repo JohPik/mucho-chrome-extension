@@ -11,6 +11,7 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx, tabsState, deleteB
     }
 
     useEffect( () => {
+        // console.log("Called in BOKKMARKS")
         setCurrentTab(tabsState[tabIdx]);
     }, [tabsState, tabIdx]);
 

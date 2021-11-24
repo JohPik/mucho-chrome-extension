@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useTabsContext } from '../../contextTabs';
 import getFavicon from '../../faviconUtilities/getFavicon';
 
-export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clikedTab }) {
+export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, clikedTab, setSpecialCase }) {
 
 
     const { addTab, renameTab, deleteTab, addBookmark } = useTabsContext();
@@ -61,7 +61,8 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, cliked
         const {type, validate} = currentCase;
         // when it is a tab we only care about the name
         if(type === "tab") {
-            validate({clikedTab, name})
+            validate({clikedTab, name});
+            setSpecialCase(true);
         } else { // when it is a shortcut we need the tableIdx, name, URL and Favicon
             // Get a Favicon
             const favicon = await getFavicon(URL, name);
@@ -80,6 +81,7 @@ export default function MultiPurposeModal({ setIsModal,  useCase, tabIdx, cliked
         closeModal();
         //deleteCurrentTab
         deleteTab(clikedTab);
+        setSpecialCase(true);
     }
 
     if(!currentCase) return <h2>LOADING...</h2>
