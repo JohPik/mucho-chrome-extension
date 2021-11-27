@@ -64,8 +64,9 @@ const TabsProvider = ({ children }) => {
         
         //Looks for User Tabs stored inside chrome    
         const getChromeTabs = async () => {            
-            await chrome.storage.sync.get(['MUCHO_CHROME_TABS'], async result => {
-                const userTabs = JSON.parse(result.MUCHO_CHROME_TABS);
+            await chrome.storage.local.get(['MUCHO_CHROME_TABS'], async result => {
+                // const userTabs = JSON.parse(result.MUCHO_CHROME_TABS);
+                const userTabs = result.MUCHO_CHROME_TABS;
                 
                 if(userTabs) {
                     Promise.resolve(checkedFavicons(userTabs).then( checkedTabs => {
@@ -81,7 +82,7 @@ const TabsProvider = ({ children }) => {
 
     // Saves updated Tabs to Chrome
     useEffect(() => {
-        chrome.storage.sync.set({ MUCHO_CHROME_TABS: JSON.stringify([...tabsState])});
+        chrome.storage.local.set({ MUCHO_CHROME_TABS: [...tabsState]});
     }, [tabsState])
 
 

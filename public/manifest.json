@@ -12,6 +12,7 @@
     "storage",
     "activeTab",
     "search",
+    "unlimitedStorage", 
     "chrome://favicon/*",
     "http://www.google.com/*",
     "https://images.unsplash.com/*"
