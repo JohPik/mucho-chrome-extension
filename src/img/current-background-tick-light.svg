@@ -11,9 +11,9 @@
     width="35"
     height="35"
     rx="17.5"
-    fill="#02000F"
-    fill-opacity="0.9"
-    stroke="white"
+    fill="white"
+    fill-opacity="0.5"
+    stroke="#02000F"
   />
-<path d="M13.3335 18L17.3335 21.3334L22.6668 14.6667" stroke="white" />
+<path d="M13.3335 18L17.3335 21.3334L22.6668 14.6667" stroke="#02000F" />
 </svg>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect} from 'react';
 import edit from '../../img/edit.svg';
+import editLight from '../../img/edit-light.svg';
 import plus from '../../img/plus.svg';
+import plusLight from '../../img/plus-light.svg';
 import Bookmark from './Bookmark';
 
-export default function Bookmarks({ modal, tabIdx, setTabIdx, tabsState, deleteBookmark, currentTab, setCurrentTab }) {
+export default function Bookmarks({ modal, tabIdx, setTabIdx, tabsState, deleteBookmark, currentTab, setCurrentTab, isDarkModeOff }) {
 
     const manageTabChange = (tab, idx) => {
         setCurrentTab(tab);
@@ -30,14 +32,14 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx, tabsState, deleteB
                                         {tab.name.length > 13 ? tab.name.slice(0,10) + "..." : tab.name}
                                     </button>
                                     <button className="bookmarks__edit-button" onClick={() => modal("editTab", idx)}>
-                                    <img src={edit} alt="edit bookmark" />
+                                    <img src={ isDarkModeOff ? editLight : edit} alt="edit bookmark" />
                                     </button>
                                 </li>
                         )}
                         { tabsState.length < 5 && 
                             <li>
                                 <button onClick={() => modal("createTab")}>
-                                    <img src={plus} alt="add bookmark" />
+                                    <img src={ isDarkModeOff ? plusLight : plus} alt="add bookmark Tab" />
                                 </button>
                             </li>
                         }
@@ -54,13 +56,14 @@ export default function Bookmarks({ modal, tabIdx, setTabIdx, tabsState, deleteB
                             favicon = {link.img.faviconURL} 
                             shortcutIdx={idx}
                             tabIdx={tabIdx}
-                            deleteBookmark={deleteBookmark}/> 
+                            deleteBookmark={deleteBookmark}
+                            isDarkModeOff={isDarkModeOff}/> 
                     })}
 
                     {currentTab.links.length < 10 &&
                         <div className="bookmark add__new">
                             <button onClick={() => modal("createShortcut")}>
-                                <img src={plus} alt="add bookmark" />
+                                <img src={ isDarkModeOff ? plusLight : plus} alt="add bookmark" />
                                 <p>add new</p>
                             </button>
                         </div>

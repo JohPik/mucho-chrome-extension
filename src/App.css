@@ -805,26 +805,61 @@ input:checked + .slider {
 }
 
 .light-mode .search button,
-.light-mode .bookmarks__navigation {
+.light-mode .bookmarks__navigation,
+.light-mode .bookmarks__navigation__no_tab {
   background: var(--clr-white-800);
+}
+
+.light-mode .bookmarks__navigation__no_tab button {
+  color: var(--clr-dark-900);
+}
+
+.light-mode .bookmarks__navigation__no_tab button::before {
+  content: url('./img/plus-light.svg');
 }
 
 .light-mode.features .search button::before {
   background: var(--clr-white-400);
 }
 
+.light-mode .bookmark p,
 .light-mode .bookmarks__navigation li button,
-.light-mode .bookmark a {
+.light-mode .bookmark a,
+.light-mode button.bookmark__cancel-button {
   color: var(--clr-dark-900);
 }
 
 .light-mode .bookmarks__navigation li.active::after,
-.light-mode .bookmark p::after {
+.light-mode .bookmark p::after,
+.light-mode .bookmarks__navigation li:not(.active):after {
   background-color: var(--clr-dark-900);
 }
 
+.light-mode .bookmark:hover, .bookmark.active {
+    background-color: var(--clr-white-800);
+}
 .light-mode #search-engine-input::placeholder {
   color: var(--clr-dark-600);
+}
+
+
+/* Tabs Modal */
+.light-mode .modal {
+  background-color: var(--clr-white-900);
+  color: var(--clr-dark-900);
+}
+
+.light-mode .modal input[type=text] {
+    background-color: rgba(0,0,0,.2);
+    color: var(--clr-dark-900);
+}
+
+.light-mode .modal .button__wrapper button {
+  color: var(--clr-dark-900);
+  border-color: var(--clr-dark-900);
+}
+.light-mode .modal .button__wrapper .submit__button {
+  background-color: rgba(0,0,0,.2);
 }
 
 /* Settings (Modal) */
@@ -869,6 +904,12 @@ input:checked + .slider {
 }
 .light-mode .load-more-wrapper button {
   border: solid 1px var(--clr-dark-900);
+}
+.light-mode .current-background img {
+  border-color: var(--clr-dark-900);
+}
+.light-mode .current-background .img-wrapper::after {
+  content: url('./img/current-background-tick-light.svg');
 }
 
 .light-mode button.reset-default {

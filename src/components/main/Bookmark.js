@@ -1,35 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import small_white_close from '../../img/small_white_close.svg';
+import close from '../../img/small_white_close.svg';
+import closeLight from '../../img/small_white_close-light.svg';
 
-export default function Bookmark({ linkName, favicon, url, deleteBookmark, tabIdx, shortcutIdx }) {
+export default function Bookmark({ linkName, favicon, url, deleteBookmark, tabIdx, shortcutIdx, isDarkModeOff }) {
 
-    // console.log("Re Render in Bookmark - link URL", link.img.faviconURL );
-
-    // // const { linkName, url } = link;
-    // const [linkName, setLinkNAme] = useState("");
-    // const [url, setURL] = useState("");
-    // const [favicon, setFavicon] = useState("");
-
-    // console.log("Favicon from Single Bookmark", favicon);
-
-    // const favicon = link.img.faviconURL;
     const [active, isActive] = useState(false);
 
     const manageDelete = (tabIdx, shortcutIdx) => {
         isActive(false);
         deleteBookmark(tabIdx, shortcutIdx);
     }
-
-    // useEffect(() => {
-    //     const { linkName, url, img } = link;
-    //     setLinkNAme(linkName);
-    //     setURL(url);
-    //     setFavicon(img.faviconURL);
-
-    //     console.log("LINK HAS CHANGED in Bookmark")
-    //     console.log("linkName", linkName)
-    //     console.log("favicon", favicon)
-    // }, [])
 
     if (!active){
         return (
@@ -41,7 +21,7 @@ export default function Bookmark({ linkName, favicon, url, deleteBookmark, tabId
                     <p>{linkName.length > 10 ? linkName.slice(0,7) + "..." : linkName}</p>
                 </a>
                 <button className="bookmark__delete-button" onClick={() => isActive(true)}>
-                    <img src={small_white_close} alt="delete bookmark" />
+                    <img alt="delete bookmark" src={ isDarkModeOff ? closeLight : close}/>
                 </button>
             </div>
         )
