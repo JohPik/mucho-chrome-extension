@@ -835,7 +835,7 @@ input:checked + .slider {
   background-color: var(--clr-dark-900);
 }
 
-.light-mode .bookmark:hover, .bookmark.active {
+.light-mode .bookmark:hover {
     background-color: var(--clr-white-800);
 }
 .light-mode #search-engine-input::placeholder {
