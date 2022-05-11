@@ -17,7 +17,6 @@ Chrome Extensions that helps managing shortcuts
 * CSS
 * Javascript
 * React JS
-* Paypal API
 
 ## Authors
 **Johan Piquet**
